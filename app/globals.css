@@ -24,3 +24,595 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+/* =========================================
+   SUTRA HEALTH NAVBAR
+========================================= */
+
+.siteHeader {
+  position: sticky;
+  top: 0;
+  z-index: 50;
+  width: 100%;
+  background: #faf8f1;
+  border-bottom: 1px solid rgba(23, 63, 53, 0.1);
+}
+
+.navbarContainer {
+  width: min(1500px, calc(100% - 48px));
+  min-height: 82px;
+  margin: 0 auto;
+
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+/* =========================================
+   BRAND
+========================================= */
+
+.brand {
+  display: inline-flex;
+  align-items: center;
+  gap: 11px;
+  flex-shrink: 0;
+  text-decoration: none;
+  color: #173f35;
+}
+
+.brandLogo {
+  width: 52px;
+  height: 52px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  overflow: hidden;
+  border-radius: 50%;
+}
+
+.brandLogo img {
+  width: 100%;
+  height: 100%;
+  object-fit: contain;
+}
+
+.brandText {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.brandName {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 24px;
+  line-height: 1;
+  font-weight: 600;
+  letter-spacing: -0.02em;
+}
+
+.brandTagline {
+  margin-top: 5px;
+
+  font-size: 9px;
+  line-height: 1;
+  letter-spacing: 0.04em;
+
+  color: #71817a;
+}
+
+/* =========================================
+   DESKTOP NAV
+========================================= */
+
+.desktopNav {
+  margin-left: auto;
+
+  display: flex;
+  align-items: center;
+  gap: 24px;
+}
+
+.navLink,
+.navDropdownButton {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 8px 0;
+
+  border: 0;
+  background: transparent;
+
+  font-family: inherit;
+  font-size: 13px;
+  font-weight: 500;
+
+  color: #263f39;
+  text-decoration: none;
+
+  white-space: nowrap;
+  cursor: pointer;
+
+  transition:
+    color 180ms ease,
+    opacity 180ms ease;
+}
+
+.navLink:hover,
+.navDropdownButton:hover {
+  color: #65966f;
+}
+
+.navDropdown {
+  position: relative;
+}
+
+.chevron {
+  display: inline-block;
+  font-size: 10px;
+  transition: transform 180ms ease;
+}
+
+.chevronOpen {
+  transform: rotate(180deg);
+}
+
+/* =========================================
+   DESKTOP DROPDOWN
+========================================= */
+
+.dropdownMenu {
+  position: absolute;
+
+  top: calc(100% + 14px);
+  left: 50%;
+
+  width: 570px;
+
+  transform: translateX(-50%);
+
+  padding: 18px;
+
+  background: #fffefa;
+
+  border: 1px solid rgba(23, 63, 53, 0.1);
+  border-radius: 18px;
+
+  box-shadow:
+    0 20px 50px rgba(23, 63, 53, 0.12),
+    0 3px 10px rgba(23, 63, 53, 0.04);
+
+  animation: dropdownIn 160ms ease-out;
+}
+
+.dropdownMenu::before {
+  content: "";
+
+  position: absolute;
+
+  top: -7px;
+  left: 50%;
+
+  width: 14px;
+  height: 14px;
+
+  background: #fffefa;
+
+  border-left: 1px solid rgba(23, 63, 53, 0.1);
+  border-top: 1px solid rgba(23, 63, 53, 0.1);
+
+  transform: translateX(-50%) rotate(45deg);
+}
+
+@keyframes dropdownIn {
+  from {
+    opacity: 0;
+    transform: translate(-50%, -5px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translate(-50%, 0);
+  }
+}
+
+.dropdownHeader {
+  position: relative;
+  z-index: 2;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  padding: 2px 4px 14px;
+
+  border-bottom: 1px solid rgba(23, 63, 53, 0.08);
+}
+
+.dropdownHeader span {
+  font-family: Georgia, "Times New Roman", serif;
+  font-size: 19px;
+  color: #173f35;
+}
+
+.dropdownHeader a {
+  font-size: 11px;
+  font-weight: 600;
+  color: #65966f;
+  text-decoration: none;
+}
+
+.dropdownHeader a:hover {
+  color: #173f35;
+}
+
+.dropdownGrid {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 5px;
+
+  margin-top: 10px;
+}
+
+.dropdownItem {
+  display: flex;
+  align-items: center;
+  gap: 11px;
+
+  min-height: 58px;
+  padding: 10px;
+
+  border-radius: 11px;
+
+  color: #173f35;
+  text-decoration: none;
+
+  transition:
+    background 180ms ease,
+    transform 180ms ease;
+}
+
+.dropdownItem:hover {
+  background: #edf3e9;
+  transform: translateX(2px);
+}
+
+.dropdownIcon {
+  width: 32px;
+  height: 32px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 50%;
+
+  background: #eaf1e7;
+
+  font-size: 13px;
+  color: #65966f;
+}
+
+.dropdownItem > span:last-child {
+  min-width: 0;
+  flex: 1;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.dropdownItemTitle {
+  font-size: 12px;
+  line-height: 1.35;
+  font-weight: 500;
+}
+
+.dropdownArrow {
+  font-size: 12px;
+  color: #65966f;
+  opacity: 0;
+
+  transform: translateX(-4px);
+
+  transition:
+    opacity 180ms ease,
+    transform 180ms ease;
+}
+
+.dropdownItem:hover .dropdownArrow {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+/* =========================================
+   BOOK APPOINTMENT
+========================================= */
+
+.desktopBookButton {
+  flex-shrink: 0;
+
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  margin-left: auto;
+
+  min-height: 48px;
+  padding: 0 22px;
+
+  border-radius: 999px;
+
+  background: #123f35;
+  color: #ffffff;
+
+  font-size: 12px;
+  font-weight: 600;
+
+  text-decoration: none;
+
+  transition:
+    background 180ms ease,
+    transform 180ms ease,
+    box-shadow 180ms ease;
+}
+
+.desktopBookButton:hover {
+  background: #0d332c;
+  transform: translateY(-1px);
+  box-shadow: 0 8px 20px rgba(18, 63, 53, 0.16);
+}
+
+/* =========================================
+   MOBILE BUTTON
+========================================= */
+
+.mobileMenuButton {
+  display: none;
+
+  width: 44px;
+  height: 44px;
+
+  margin-left: auto;
+
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 5px;
+
+  border: 1px solid rgba(23, 63, 53, 0.12);
+  border-radius: 50%;
+
+  background: transparent;
+
+  cursor: pointer;
+}
+
+.line {
+  width: 18px;
+  height: 1.5px;
+
+  border-radius: 999px;
+
+  background: #173f35;
+
+  transition:
+    transform 180ms ease,
+    opacity 180ms ease;
+}
+
+.lineOneOpen {
+  transform: translateY(6.5px) rotate(45deg);
+}
+
+.lineTwoOpen {
+  opacity: 0;
+}
+
+.lineThreeOpen {
+  transform: translateY(-6.5px) rotate(-45deg);
+}
+
+/* =========================================
+   MOBILE NAV
+========================================= */
+
+.mobileNav {
+  display: none;
+}
+
+/* =========================================
+   TABLET
+========================================= */
+
+@media (max-width: 1250px) {
+  .navbarContainer {
+    width: min(100% - 32px, 1500px);
+    gap: 18px;
+  }
+
+  .desktopNav {
+    gap: 16px;
+  }
+
+  .navLink,
+  .navDropdownButton {
+    font-size: 12px;
+  }
+
+  .desktopBookButton {
+    padding: 0 17px;
+  }
+}
+
+/* =========================================
+   MOBILE
+========================================= */
+
+@media (max-width: 1050px) {
+  .navbarContainer {
+    min-height: 74px;
+  }
+
+  .desktopNav,
+  .desktopBookButton {
+    display: none;
+  }
+
+  .mobileMenuButton {
+    display: flex;
+  }
+
+  .mobileNav {
+    display: block;
+
+    max-height: 0;
+    overflow: hidden;
+
+    background: #faf8f1;
+
+    border-top: 0 solid rgba(23, 63, 53, 0.08);
+
+    transition:
+      max-height 300ms ease,
+      border-color 300ms ease;
+  }
+
+  .mobileNavOpen {
+    max-height: calc(100vh - 74px);
+    overflow-y: auto;
+
+    border-top-width: 1px;
+  }
+
+  .mobileNavInner {
+    width: min(100% - 32px, 700px);
+    margin: 0 auto;
+
+    padding: 10px 0 24px;
+  }
+
+  .mobileNavLink,
+  .mobileDropdownButton {
+    width: 100%;
+    min-height: 52px;
+
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+
+    border: 0;
+    border-bottom: 1px solid rgba(23, 63, 53, 0.08);
+
+    background: transparent;
+
+    font-family: inherit;
+    font-size: 14px;
+    font-weight: 500;
+
+    color: #173f35;
+    text-decoration: none;
+
+    cursor: pointer;
+  }
+
+  .mobileDropdownButton {
+    text-align: left;
+  }
+
+  .mobileChevron {
+    font-size: 11px;
+
+    transition: transform 180ms ease;
+  }
+
+  .mobileChevronOpen {
+    transform: rotate(180deg);
+  }
+
+  .mobileDropdownContent {
+    display: flex;
+    flex-direction: column;
+
+    max-height: 0;
+    overflow: hidden;
+
+    padding-left: 12px;
+
+    transition: max-height 250ms ease;
+  }
+
+  .mobileDropdownContentOpen {
+    max-height: 600px;
+  }
+
+  .mobileDropdownContent a {
+    display: flex;
+    align-items: center;
+
+    min-height: 43px;
+
+    padding-left: 14px;
+
+    border-bottom: 1px solid rgba(23, 63, 53, 0.05);
+
+    color: #687a73;
+    text-decoration: none;
+
+    font-size: 13px;
+  }
+
+  .mobileDropdownContent a:hover {
+    color: #173f35;
+  }
+
+  .mobileBookButton {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 8px;
+
+    min-height: 50px;
+
+    margin-top: 18px;
+
+    border-radius: 999px;
+
+    background: #123f35;
+    color: #ffffff;
+
+    font-size: 13px;
+    font-weight: 600;
+
+    text-decoration: none;
+  }
+}
+
+/* =========================================
+   SMALL MOBILE
+========================================= */
+
+@media (max-width: 480px) {
+  .navbarContainer {
+    width: calc(100% - 24px);
+  }
+
+  .brandLogo {
+    width: 44px;
+    height: 44px;
+  }
+
+  .brandName {
+    font-size: 20px;
+  }
+
+  .brandTagline {
+    font-size: 8px;
+  }
+}
