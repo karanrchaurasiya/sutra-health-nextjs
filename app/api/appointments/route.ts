@@ -19,6 +19,73 @@ type AppointmentBody = {
   time?: string;
 };
 
+type Schedule = {
+  day_of_week: number;
+  start_time: string;
+  end_time: string;
+  slot_duration_minutes: number | null;
+  active: boolean;
+};
+
+/**
+ * Escape values before inserting them into HTML emails.
+ */
+function escapeHtml(value: string | number): string {
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+/**
+ * Convert HH:MM into minutes.
+ */
+function timeToMinutes(value: string): number {
+  const [hours, minutes] = value
+    .slice(0, 5)
+    .split(":")
+    .map(Number);
+
+  return hours * 60 + minutes;
+}
+
+/**
+ * Format date for India.
+ */
+function formatDate(dateString: string): string {
+  return new Date(`${dateString}T00:00:00`).toLocaleDateString(
+    "en-IN",
+    {
+      day: "numeric",
+      month: "long",
+      year: "numeric",
+    },
+  );
+}
+
+/**
+ * Format HH:MM into 12-hour time.
+ */
+function formatTime(timeString: string): string {
+  const [hourString, minuteString] = timeString.split(":");
+
+  const hour = Number(hourString);
+  const minute = Number(minuteString);
+
+  const ampm = hour >= 12 ? "PM" : "AM";
+  const displayHour = hour % 12 || 12;
+
+  return `${displayHour}:${String(minute).padStart(
+    2,
+    "0",
+  )} ${ampm}`;
+}
+
+/**
+ * POST /api/appointments
+ */
 export async function POST(request: NextRequest) {
   try {
     // ==================================================
@@ -29,13 +96,18 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          error: "Supabase environment variables are missing.",
+          error:
+            "Supabase environment variables are missing.",
         },
         { status: 500 },
       );
     }
 
-    if (!gmailUser || !gmailAppPassword || !doctorEmail) {
+    if (
+      !gmailUser ||
+      !gmailAppPassword ||
+      !doctorEmail
+    ) {
       return NextResponse.json(
         {
           success: false,
@@ -66,10 +138,25 @@ export async function POST(request: NextRequest) {
     // ==================================================
 
     const transporter = nodemailer.createTransport({
-      service: "gmail",
+      host: "smtp.gmail.com",
+      port: 587,
+      secure: false,
+
       auth: {
         user: gmailUser,
         pass: gmailAppPassword,
+      },
+
+      // Helps avoid IPv6 SMTP connection problems
+      // on some serverless environments.
+      family: 4,
+
+      connectionTimeout: 10000,
+      greetingTimeout: 10000,
+      socketTimeout: 15000,
+
+      tls: {
+        rejectUnauthorized: true,
       },
     });
 
@@ -166,7 +253,8 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          error: "Please enter a valid email address.",
+          error:
+            "Please enter a valid email address.",
         },
         { status: 400 },
       );
@@ -194,7 +282,9 @@ export async function POST(request: NextRequest) {
       `${appointmentDate}T00:00:00`,
     );
 
-    if (Number.isNaN(selectedDate.getTime())) {
+    if (
+      Number.isNaN(selectedDate.getTime())
+    ) {
       return NextResponse.json(
         {
           success: false,
@@ -212,6 +302,26 @@ export async function POST(request: NextRequest) {
       !/^\d{2}:\d{2}$/.test(
         appointmentTime,
       )
+    ) {
+      return NextResponse.json(
+        {
+          success: false,
+          error: "Invalid appointment time.",
+        },
+        { status: 400 },
+      );
+    }
+
+    const [hours, minutes] =
+      appointmentTime
+        .split(":")
+        .map(Number);
+
+    if (
+      hours < 0 ||
+      hours > 23 ||
+      minutes < 0 ||
+      minutes > 59
     ) {
       return NextResponse.json(
         {
@@ -287,7 +397,10 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    if (!schedules || schedules.length === 0) {
+    if (
+      !schedules ||
+      schedules.length === 0
+    ) {
       return NextResponse.json(
         {
           success: false,
@@ -299,55 +412,42 @@ export async function POST(request: NextRequest) {
     }
 
     // ==================================================
-    // TIME → MINUTES
+    // VERIFY VALID SLOT
     // ==================================================
-
-    const timeToMinutes = (
-      value: string,
-    ) => {
-      const [hours, minutes] = value
-        .slice(0, 5)
-        .split(":")
-        .map(Number);
-
-      return hours * 60 + minutes;
-    };
 
     const requestedMinutes =
       timeToMinutes(appointmentTime);
 
-    // ==================================================
-    // VERIFY VALID SLOT
-    // ==================================================
-
     const validSchedule =
-      schedules.find((schedule) => {
-        const startMinutes =
-          timeToMinutes(
-            schedule.start_time,
+      (schedules as Schedule[]).find(
+        (schedule) => {
+          const startMinutes =
+            timeToMinutes(
+              schedule.start_time,
+            );
+
+          const endMinutes =
+            timeToMinutes(
+              schedule.end_time,
+            );
+
+          const duration =
+            Number(
+              schedule.slot_duration_minutes,
+            ) || 15;
+
+          return (
+            requestedMinutes >=
+              startMinutes &&
+            requestedMinutes + duration <=
+              endMinutes &&
+            (requestedMinutes -
+              startMinutes) %
+              duration ===
+              0
           );
-
-        const endMinutes =
-          timeToMinutes(
-            schedule.end_time,
-          );
-
-        const duration =
-          Number(
-            schedule.slot_duration_minutes,
-          ) || 15;
-
-        return (
-          requestedMinutes >=
-            startMinutes &&
-          requestedMinutes + duration <=
-            endMinutes &&
-          (requestedMinutes -
-            startMinutes) %
-            duration ===
-            0
-        );
-      });
+        },
+      );
 
     if (!validSchedule) {
       return NextResponse.json(
@@ -494,14 +594,10 @@ export async function POST(request: NextRequest) {
       return NextResponse.json(
         {
           success: false,
-          error:
-            insertError.message,
-          code:
-            insertError.code,
-          details:
-            insertError.details,
-          hint:
-            insertError.hint,
+          error: insertError.message,
+          code: insertError.code,
+          details: insertError.details,
+          hint: insertError.hint,
         },
         { status: 500 },
       );
@@ -512,46 +608,45 @@ export async function POST(request: NextRequest) {
     // ==================================================
 
     const formattedDate =
-      new Date(
-        `${appointmentDate}T00:00:00`,
-      ).toLocaleDateString("en-IN", {
-        day: "numeric",
-        month: "long",
-        year: "numeric",
-      });
-
-    const [
-      hourString,
-      minuteString,
-    ] = appointmentTime.split(":");
-
-    const hour =
-      Number(hourString);
-
-    const minute =
-      Number(minuteString);
-
-    const ampm =
-      hour >= 12 ? "PM" : "AM";
-
-    const displayHour =
-      hour % 12 || 12;
+      formatDate(appointmentDate);
 
     const formattedTime =
-      `${displayHour}:${String(
-        minute,
-      ).padStart(2, "0")} ${ampm}`;
+      formatTime(appointmentTime);
+
+    // ==================================================
+    // ESCAPE EMAIL VALUES
+    // ==================================================
+
+    const safePatientName =
+      escapeHtml(patientName);
+
+    const safePatientEmail =
+      escapeHtml(patientEmail);
+
+    const safePatientPhone =
+      escapeHtml(patientPhone);
+
+    const safePatientGender =
+      escapeHtml(patientGender);
+
+    const safePatientAge =
+      escapeHtml(patientAge);
+
+    const safeFormattedDate =
+      escapeHtml(formattedDate);
+
+    const safeFormattedTime =
+      escapeHtml(formattedTime);
+
+    const safeMeetingUrl =
+      encodeURI(meetingUrl);
 
     // ==================================================
     // PATIENT EMAIL
     // ==================================================
 
-    let patientEmailStatus:
-      | "sent"
-      | "failed" = "sent";
-
-    try {
-      await transporter.sendMail({
+    const patientEmailPromise =
+      transporter.sendMail({
         from: `"Sutra Health" <${gmailUser}>`,
         to: patientEmail,
         subject:
@@ -565,7 +660,7 @@ export async function POST(request: NextRequest) {
               </h1>
 
               <p style="color: #687A73; line-height: 1.6;">
-                Dear ${patientName},
+                Dear ${safePatientName},
               </p>
 
               <p style="color: #687A73; line-height: 1.6;">
@@ -575,11 +670,11 @@ export async function POST(request: NextRequest) {
               <div style="margin: 24px 0; padding: 20px; background: #F1F4ED; border-radius: 12px;">
 
                 <p style="margin: 0 0 10px;">
-                  <strong>Date:</strong> ${formattedDate}
+                  <strong>Date:</strong> ${safeFormattedDate}
                 </p>
 
                 <p style="margin: 0 0 10px;">
-                  <strong>Time:</strong> ${formattedTime}
+                  <strong>Time:</strong> ${safeFormattedTime}
                 </p>
 
                 <p style="margin: 0;">
@@ -589,7 +684,7 @@ export async function POST(request: NextRequest) {
               </div>
 
               <a
-                href="${meetingUrl}"
+                href="${safeMeetingUrl}"
                 style="display: inline-block; padding: 13px 22px; background: #173F35; color: #ffffff; text-decoration: none; border-radius: 24px; font-weight: bold;"
               >
                 Join Appointment
@@ -609,29 +704,12 @@ export async function POST(request: NextRequest) {
         `,
       });
 
-      console.log(
-        "PATIENT EMAIL SENT:",
-        patientEmail,
-      );
-    } catch (emailError) {
-      patientEmailStatus = "failed";
-
-      console.error(
-        "PATIENT EMAIL FAILED:",
-        emailError,
-      );
-    }
-
     // ==================================================
     // DOCTOR EMAIL
     // ==================================================
 
-    let doctorEmailStatus:
-      | "sent"
-      | "failed" = "sent";
-
-    try {
-      await transporter.sendMail({
+    const doctorEmailPromise =
+      transporter.sendMail({
         from: `"Sutra Health" <${gmailUser}>`,
         to: doctorEmail,
         subject:
@@ -655,37 +733,37 @@ export async function POST(request: NextRequest) {
                 </h2>
 
                 <p style="margin: 0 0 8px;">
-                  <strong>Name:</strong> ${patientName}
+                  <strong>Name:</strong> ${safePatientName}
                 </p>
 
                 <p style="margin: 0 0 8px;">
-                  <strong>Email:</strong> ${patientEmail}
+                  <strong>Email:</strong> ${safePatientEmail}
                 </p>
 
                 <p style="margin: 0 0 8px;">
-                  <strong>Phone:</strong> ${patientPhone}
+                  <strong>Phone:</strong> ${safePatientPhone}
                 </p>
 
                 <p style="margin: 0 0 8px;">
-                  <strong>Age:</strong> ${patientAge}
+                  <strong>Age:</strong> ${safePatientAge}
                 </p>
 
                 <p style="margin: 0 0 8px;">
-                  <strong>Gender:</strong> ${patientGender}
+                  <strong>Gender:</strong> ${safePatientGender}
                 </p>
 
                 <p style="margin: 0 0 8px;">
-                  <strong>Date:</strong> ${formattedDate}
+                  <strong>Date:</strong> ${safeFormattedDate}
                 </p>
 
                 <p style="margin: 0;">
-                  <strong>Time:</strong> ${formattedTime}
+                  <strong>Time:</strong> ${safeFormattedTime}
                 </p>
 
               </div>
 
               <a
-                href="${meetingUrl}"
+                href="${safeMeetingUrl}"
                 style="display: inline-block; padding: 13px 22px; background: #173F35; color: #ffffff; text-decoration: none; border-radius: 24px; font-weight: bold;"
               >
                 Open Meeting
@@ -700,16 +778,59 @@ export async function POST(request: NextRequest) {
         `,
       });
 
+    // ==================================================
+    // SEND BOTH EMAILS IN PARALLEL
+    // ==================================================
+
+    const [
+      patientResult,
+      doctorResult,
+    ] = await Promise.allSettled([
+      patientEmailPromise,
+      doctorEmailPromise,
+    ]);
+
+    const patientEmailStatus =
+      patientResult.status === "fulfilled"
+        ? "sent"
+        : "failed";
+
+    const doctorEmailStatus =
+      doctorResult.status === "fulfilled"
+        ? "sent"
+        : "failed";
+
+    // ==================================================
+    // EMAIL LOGS
+    // ==================================================
+
+    if (
+      patientResult.status ===
+      "fulfilled"
+    ) {
+      console.log(
+        "PATIENT EMAIL SENT:",
+        patientEmail,
+      );
+    } else {
+      console.error(
+        "PATIENT EMAIL FAILED:",
+        patientResult.reason,
+      );
+    }
+
+    if (
+      doctorResult.status ===
+      "fulfilled"
+    ) {
       console.log(
         "DOCTOR EMAIL SENT:",
         doctorEmail,
       );
-    } catch (emailError) {
-      doctorEmailStatus = "failed";
-
+    } else {
       console.error(
         "DOCTOR EMAIL FAILED:",
-        emailError,
+        doctorResult.reason,
       );
     }
 
@@ -720,12 +841,17 @@ export async function POST(request: NextRequest) {
     return NextResponse.json(
       {
         success: true,
+
         message:
           "Appointment booked successfully.",
+
         emailStatus: {
-          patient: patientEmailStatus,
-          doctor: doctorEmailStatus,
+          patient:
+            patientEmailStatus,
+          doctor:
+            doctorEmailStatus,
         },
+
         appointment: {
           id: appointment.id,
           name: patientName,
