@@ -470,26 +470,31 @@ body {
   }
 
   .mobileNav {
-    display: block;
+  display: block;
 
-    max-height: 0;
-    overflow: hidden;
+  height: 0;
+  max-height: 0;
 
-    background: #faf8f1;
+  overflow: hidden;
 
-    border-top: 0 solid rgba(23, 63, 53, 0.08);
+  background: #faf8f1;
 
-    transition:
-      max-height 300ms ease,
-      border-color 300ms ease;
-  }
+  border-top: 0 solid rgba(23, 63, 53, 0.08);
 
-  .mobileNavOpen {
-    max-height: calc(100vh - 74px);
-    overflow-y: auto;
+  transition:
+    height 300ms ease,
+    max-height 300ms ease,
+    border-color 300ms ease;
+}
 
-    border-top-width: 1px;
-  }
+.mobileNavOpen {
+  height: calc(100vh - 74px);
+  max-height: calc(100vh - 74px);
+
+  overflow-y: auto;
+
+  border-top-width: 1px;
+}
 
   .mobileNavInner {
     width: min(100% - 32px, 700px);
