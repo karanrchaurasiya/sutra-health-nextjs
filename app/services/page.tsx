@@ -66,7 +66,7 @@ const services = [
     description:
       "Practical nutrition guidance designed around your individual needs, preferences and everyday routine.",
     href: "/services/nutrition-counselling",
-    image: "/images/services/nutrition.png",
+    image: "/images/services/nutrition-counselling.png",
   },
   {
     number: "05",
@@ -74,7 +74,7 @@ const services = [
     description:
       "Mindfulness and relaxation practices that can become part of a healthier daily routine.",
     href: "/services/meditation-stress-support",
-    image: "/images/services/meditation.png",
+    image: "/images/services/meditation-stress-support.png",
   },
   {
     number: "06",
