@@ -588,9 +588,9 @@ export default function BookAppointmentPage() {
         </p>
 
         <p className="mt-1 text-xs leading-5 text-[#536A62]">
-          Your appointment has been successfully
-          booked. Confirmation details have been
-          sent to your email.
+          Your appointment has been successfully booked.
+          Confirmation details have been sent to your email.
+          If you don't see the email in your inbox, please check your Spam or Junk folder.
         </p>
       </div>
     </div>
