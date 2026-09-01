@@ -7,7 +7,7 @@ const expert = {
   role: "MBBS, MPH, DrPH",
   description:
     "Dr. Rakesh Sarwal's publications, research talks and academic CV are available on his academic profile page.",
-  image: "/images/doctor.png",
+  image: "/images/doctor.jpeg",
   profileUrl: "https://academic.lifequality.org.in/",
 };
 
