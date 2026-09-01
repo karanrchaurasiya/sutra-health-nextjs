@@ -7,6 +7,7 @@ import Container from "@/components/shared/Container";
 import {
   conditions,
   getCondition,
+  type Condition,
 } from "@/data/conditions";
 
 interface ConditionPageProps {
@@ -64,7 +65,7 @@ export default async function ConditionPage({
 
   const relatedConditions = condition.relatedConditions
     .map((relatedSlug) => getCondition(relatedSlug))
-    .filter(Boolean);
+    .filter((related): related is Condition => related !== undefined);
 
   const pageUrl =
     `https://lifequality.org.in/conditions/${condition.slug}`;
@@ -361,7 +362,8 @@ export default async function ConditionPage({
               LIFESTYLE FACTORS
           ================================================== */}
 
-          {condition.lifestyleFactors?.length > 0 && (
+          {condition.lifestyleFactors &&
+            condition.lifestyleFactors.length > 0 && (
             <section className="bg-[#F1F4ED] py-16 sm:py-20">
               <Container>
 

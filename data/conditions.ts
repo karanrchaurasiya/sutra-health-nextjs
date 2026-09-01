@@ -18,11 +18,19 @@ export interface Condition {
 
   sections: ConditionSection[];
 
+  lifestyleFactors?: {
+    title: string;
+    description: string;
+  }[];
+
   approach: string[];
 
   support: string[];
 
-  faqs: FAQ[];
+  faqs: {
+    question: string;
+    answer: string;
+  }[];
 
   relatedConditions: string[];
 }
