@@ -7,52 +7,52 @@ const faqs = [
   {
     question: "What is integrative lifestyle healthcare?",
     answer:
-      "Integrative lifestyle healthcare looks at different aspects of everyday health together. At Sutra Health, this includes lifestyle, nutrition, movement, breath and mind practices, with guidance shaped around your individual needs and goals.",
+      "Integrative lifestyle healthcare takes a whole-person view of health. At Sutra Health, this includes lifestyle, nutrition, movement, breath and mind practices, with guidance shaped around individual needs and everyday life.",
   },
   {
     question: "What does Sutra Health help with?",
     answer:
-      "Sutra Health provides lifestyle-focused support for areas such as weight management, metabolic health, high blood pressure, arthritis and joint pain, migraine and headache, digestive and gut health, and women's health.",
+      "Sutra Health provides lifestyle-focused support across areas such as weight management, metabolic health, high blood pressure, arthritis and joint pain, migraine and headache, digestive and gut health, and women's health.",
   },
   {
     question: "What is lifestyle medicine?",
     answer:
-      "Lifestyle medicine focuses on everyday behaviours and habits that influence health, including nutrition, physical activity, sleep, stress management and other aspects of daily living.",
+      "Lifestyle medicine focuses on everyday factors that influence health and wellbeing, including nutrition, physical activity, sleep, stress management and other lifestyle habits.",
   },
   {
     question: "How can lifestyle changes support my health?",
     answer:
-      "Everyday habits can play an important role in overall health and wellbeing. Sutra Health focuses on practical, sustainable changes that fit your circumstances rather than relying on a one-size-fits-all approach.",
+      "Everyday habits can influence health and wellbeing. Sutra Health focuses on practical, sustainable changes across areas such as nutrition, movement, sleep, stress, breathing and mental wellbeing.",
   },
   {
     question: "What does a Sutra Health consultation include?",
     answer:
-      "A consultation provides an opportunity to discuss your health concerns, lifestyle, nutrition, daily routine and goals. This information helps guide an individualized approach to your care.",
+      "A consultation provides an opportunity to discuss your health concerns, lifestyle, nutrition, daily routine and goals. This information helps shape an individualized approach to your care.",
   },
   {
     question: "What is the 21-Point Health Assessment?",
     answer:
-      "The 21-Point Health Assessment is a structured framework for looking at everyday health habits and identifying areas that may need attention.",
+      "The 21-Point Health Assessment is a structured framework for reflecting on everyday health habits. It uses a traffic-light approach to identify habits to continue, areas where adjustments may help, and areas where meaningful lifestyle changes may be worth considering.",
   },
   {
     question: "Do I need to follow a specific diet?",
     answer:
-      "Not necessarily. Nutrition guidance is personalized around your health needs, food habits, preferences and everyday life.",
+      "Not necessarily. Nutrition guidance can be shaped around your health needs, existing food habits, preferences and everyday routine rather than following a single diet for everyone.",
   },
   {
     question: "How can therapeutic yoga support my wellbeing?",
     answer:
-      "Therapeutic yoga can be adapted to individual needs and may include yoga postures, breathing, relaxation and mindfulness practices as appropriate.",
+      "Therapeutic yoga can be adapted to individual needs and may include practices such as yogasana, breathing, relaxation and meditation as appropriate.",
   },
   {
     question: "Can I receive personalized guidance for my health goals?",
     answer:
-      "Yes. Sutra Health takes a personalized approach, considering your health concerns, goals and everyday circumstances when developing guidance.",
+      "Yes. Sutra Health takes a personalized approach, considering your health concerns, goals and everyday circumstances when developing practical lifestyle guidance.",
   },
   {
     question: "How do I book a consultation with Sutra Health?",
     answer:
-      "You can book a consultation through the Book an Appointment option on the website. Choose an available date and time, provide the requested information and complete your appointment request.",
+      "You can book a consultation through the Book an Appointment option on the website. Select an available date and time, provide the requested information and complete your appointment request.",
   },
 ];
 

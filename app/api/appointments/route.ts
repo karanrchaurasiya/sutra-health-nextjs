@@ -138,27 +138,12 @@ export async function POST(request: NextRequest) {
     // ==================================================
 
     const transporter = nodemailer.createTransport({
-      host: "smtp.gmail.com",
-      port: 587,
-      secure: false,
-
-      auth: {
-        user: gmailUser,
-        pass: gmailAppPassword,
-      },
-
-      // Helps avoid IPv6 SMTP connection problems
-      // on some serverless environments.
-      family: 4,
-
-      connectionTimeout: 10000,
-      greetingTimeout: 10000,
-      socketTimeout: 15000,
-
-      tls: {
-        rejectUnauthorized: true,
-      },
-    });
+  service: "gmail",
+  auth: {
+    user: gmailUser,
+    pass: gmailAppPassword,
+  },
+});
 
     // ==================================================
     // READ REQUEST

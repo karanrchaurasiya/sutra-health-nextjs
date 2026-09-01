@@ -1,10 +1,14 @@
 import type { Metadata } from "next";
 
 import Hero from "@/components/hero/Hero";
+import Credibility from "@/components/hero/Credibility";
+import Problem from "@/components/hero/Problem";
+import HeroFramework from "@/components/hero/HeroFramework";
+import HowItWorks from "@/components/hero/HowItWorks";
+
+
 import Conditions from "@/components/hero/Conditions";
 import Approach from "@/components/hero/Approach";
-import Programs from "@/components/hero/Programs";
-import Service from "@/components/hero/Service";
 import Experts from "@/components/hero/Experts";
 import Testimonials from "@/components/hero/Testimonials";
 import BookingCTA from "@/components/hero/BookingCTA";
@@ -78,15 +82,19 @@ export default function Home() {
       <main>
         <Hero />
 
-        <Conditions />
+        <Credibility />
+
+        <Problem />
 
         <Approach />
 
-        <Programs />
+        <HeroFramework />
 
-        <Service />
+        <HowItWorks />
 
-        <Experts />
+        <Conditions />
+
+       <Experts />
 
         <Testimonials />
 

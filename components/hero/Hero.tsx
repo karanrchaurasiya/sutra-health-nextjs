@@ -1,170 +1,243 @@
 import Image from "next/image";
 import Link from "next/link";
+import Container from "@/components/shared/Container";
 
 export default function Hero() {
   return (
-    <section className="relative min-h-[680px] overflow-hidden">
-
-      {/* Desktop / Tablet Hero Image */}
+    <section className="relative isolate overflow-hidden bg-[#FAF8F1]">
+      {/* ==================================================
+          DESKTOP BACKGROUND
+      ================================================== */}
       <Image
-        src="/images/hero-lifestyle.png"
-        alt="Integrative lifestyle healthcare"
+        src="/images/hero-desktop5.png"
+        alt="Sutra Health consultation"
         fill
         priority
         sizes="100vw"
-        className="hidden object-cover object-center md:block"
+        className="z-0 hidden object-cover object-center lg:block"
       />
 
-      {/* Mobile Hero Image */}
+      {/* ==================================================
+          MOBILE BACKGROUND
+      ================================================== */}
       <Image
-        src="/images/hero-lifestyle-mobile.png"
-        alt="Integrative lifestyle healthcare"
+        src="/images/hero-desktop56.png"
+        alt="Sutra Health consultation"
         fill
         priority
         sizes="100vw"
-        className="object-cover object-center md:hidden"
+        className="z-0 block object-cover object-center lg:hidden"
       />
 
-      {/* Readability overlay */}
-        <div
-          className="
-            absolute inset-0
-            bg-gradient-to-r
-            from-[#FFF]/95
-            via-[#FAF8F1]/10
-            to-transparent
-
-            md:bg-gradient-to-r
-            md:from-[#FFF]/95
-            md:via-[#FAF8F1]/10
-            md:to-transparent
-          "
-        />
-
-        {/* Mobile overlay */}
-        <div
-          className="
-            absolute inset-0
-            bg-gradient-to-r
-            from-[#FAF8F1]/95
-            via-[#FAF8F1]/85
-            to-[#FAF8F1]/75
-            md:hidden
-          "
-        />
-
-      {/* Content */}
-      <div className="relative z-10 mx-auto flex min-h-[680px] max-w-[1500px] items-center px-6 sm:px-10 lg:px-16 xl:px-20">
-
-        <div className="max-w-[620px] py-20">
-
-          {/* Eyebrow */}
-          <p className="mb-5 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#609174] sm:text-[12px]">
-            Integrative Lifestyle Healthcare
-          </p>
-
-          {/* H1 */}
-          <h1 className="font-serif text-[48px] leading-[0.98] tracking-[-0.045em] text-[#123F35] sm:text-[60px] md:text-[68px] lg:text-[72px]">
-            Better health
-            <br />
-            starts with
-            <br />
-            <span className="italic text-[#65966F]">
-              your lifestyle.
-            </span>
-          </h1>
-
-          {/* Description */}
-          <p className="mt-6 max-w-[500px] text-[14px] leading-6 text-[#405B53] sm:text-[16px] sm:leading-7">
-            We help you build healthier, sustainable habits through
-            personalized lifestyle medicine, nutrition, yoga, breath
-            and mind practices.
-          </p>
-
-          {/* CTA */}
-          <div className="mt-8 flex flex-col gap-3 sm:flex-row">
-
-            <Link
-              href="/book-appointment"
-              className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#123F35] px-7 text-[13px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#0D332C]"
-            >
-              Book Consultation
-              <span aria-hidden="true">→</span>
-            </Link>
-
-            <Link
-              href="/assessment"
-              className="inline-flex h-12 items-center justify-center rounded-full border border-[#173F35]/25 bg-white/70 px-7 text-[13px] font-semibold text-[#173F35] backdrop-blur-sm transition hover:bg-white"
-            >
-              21-Point Assessment
-            </Link>
-
-          </div>
-
-          {/* Trust points */}
-          <div className="mt-9 grid max-w-[540px] grid-cols-2 border-t border-[#173F35]/15 pt-5 sm:grid-cols-4">
-
-            <TrustItem
-              icon="✦"
-              title="Evidence-based"
-              subtitle="Care"
-            />
-
-            <TrustItem
-              icon="◌"
-              title="Personalized"
-              subtitle="for You"
-            />
-
-            <TrustItem
-              icon="♧"
-              title="Expert"
-              subtitle="Guidance"
-            />
-
-            <TrustItem
-              icon="⌁"
-              title="Sustainable"
-              subtitle="Habits"
-            />
-
-          </div>
-
-        </div>
-      </div>
-    </section>
-  );
-}
-
-function TrustItem({
-  icon,
-  title,
-  subtitle,
-}: {
-  icon: string;
-  title: string;
-  subtitle: string;
-}) {
-  return (
-    <div className="flex items-center gap-2 border-[#173F35]/10 px-2 py-2 first:border-l-0 sm:border-l">
-
+      {/* ==================================================
+          DESKTOP OVERLAY
+          
+          Cream on left
+          Smooth fade in centre
+          Clear image on right
+      ================================================== */}
       <div
         aria-hidden="true"
-        className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full bg-[#E6EFE3]/90 text-[#4C8060]"
-      >
-        {icon}
-      </div>
+        className="pointer-events-none absolute inset-0 z-10 hidden lg:block"
+        style={{
+          background:
+            "linear-gradient(90deg, rgba(250,248,241,1) 0%, rgba(250,248,241,0.98) 27%, rgba(250,248,241,0.88) 38%, rgba(250,248,241,0.60) 47%, rgba(250,248,241,0.25) 56%, rgba(250,248,241,0) 70%)",
+        }}
+      />
 
-      <div>
-        <p className="text-[9px] font-semibold leading-tight text-[#304A43] sm:text-[10px]">
-          {title}
-        </p>
+      {/* ==================================================
+          MOBILE OVERLAY
 
-        <p className="mt-0.5 text-[9px] leading-tight text-[#7A8983]">
-          {subtitle}
-        </p>
-      </div>
+          Image remains visible at top.
+          Cream gradually appears behind text.
+      ================================================== */}
+      <div
+        aria-hidden="true"
+        className="pointer-events-none absolute inset-0 z-10 lg:hidden"
+        style={{
+          background:
+            "linear-gradient(180deg, rgba(250,248,241,0) 0%, rgba(250,248,241,0.02) 25%, rgba(250,248,241,0.28) 43%, rgba(250,248,241,0.78) 60%, rgba(250,248,241,0.96) 72%, rgba(250,248,241,1) 86%)",
+        }}
+      />
 
-    </div>
+      {/* ==================================================
+          HERO CONTENT
+      ================================================== */}
+      <Container>
+        <div
+          className="
+            relative z-20
+            flex
+            min-h-[650px]
+            items-end
+            pb-10
+            sm:min-h-[680px]
+            sm:pb-12
+            lg:min-h-[620px]
+            lg:items-center
+            lg:pb-0
+            xl:min-h-[650px]
+          "
+        >
+          <div
+            className="
+              w-full
+              max-w-[690px]
+              lg:py-0
+            "
+          >
+            {/* ==================================================
+                EYEBROW
+            ================================================== */}
+            <p
+              className="
+                text-[9px]
+                font-semibold
+                uppercase
+                tracking-[0.2em]
+                text-[#4F8160]
+                sm:text-[10px]
+                lg:text-[11px]
+              "
+            >
+              Integrative Lifestyle Healthcare
+            </p>
+
+            {/* ==================================================
+                HEADING
+            ================================================== */}
+            <h1
+              className="
+                mt-3
+                max-w-[680px]
+                font-serif
+                text-[40px]
+                leading-[0.98]
+                tracking-[-0.045em]
+                text-[#123F35]
+                sm:mt-4
+                sm:text-[52px]
+                md:text-[58px]
+                lg:text-[66px]
+                xl:text-[72px]
+              "
+            >
+              Build better health
+              <br />
+              through <span className="italic text-[#65966F]">lifestyle.</span>
+            </h1>
+
+            {/* ==================================================
+                DESCRIPTION
+            ================================================== */}
+            <p
+              className="
+                mt-4
+                max-w-[590px]
+                text-[12px]
+                leading-5
+                text-[#245B70]
+                sm:mt-5
+                sm:text-[14px]
+                sm:leading-7
+                lg:text-[15px]
+                lg:leading-7
+              "
+            >
+              Sutra Health takes a whole-person approach to health and
+              wellbeing, bringing together lifestyle medicine, nutrition,
+              therapeutic yoga, breath and mind practices, and sustainable
+              everyday habits.
+            </p>
+
+            {/* ==================================================
+                BUTTONS
+            ================================================== */}
+            <div
+              className="
+                mt-5
+                flex
+                flex-col
+                gap-2.5
+                sm:mt-6
+                sm:flex-row
+                sm:flex-wrap
+                sm:items-center
+                sm:gap-3
+              "
+            >
+              <Link
+                href="/book-appointment"
+                className="
+                  inline-flex
+                  items-center
+                  justify-center
+                  gap-2
+                  rounded-full
+                  bg-[#173F35]
+                  px-5
+                  py-3
+                  text-[12px]
+                  font-semibold
+                  text-white
+                  transition-colors
+                  duration-300
+                  hover:bg-[#12352D]
+                  sm:px-6
+                  sm:py-3.5
+                  sm:text-[13px]
+                "
+              >
+                Book a Consultation
+                <span aria-hidden="true">→</span>
+              </Link>
+
+              <Link
+                href="/score"
+                className="
+                  inline-flex
+                  items-center
+                  justify-center
+                  gap-2
+                  rounded-full
+                  border
+                  border-[#173F35]/15
+                  bg-[#FAF8F1]/80
+                  px-5
+                  py-3
+                  text-[12px]
+                  font-semibold
+                  text-[#173F35]
+                  backdrop-blur-[2px]
+                  transition-all
+                  duration-300
+                  hover:bg-[#FAF8F1]
+                  sm:px-6
+                  sm:py-3.5
+                  sm:text-[13px]
+                "
+              >
+                Explore the 21-Point Assessment
+              </Link>
+            </div>
+          </div>
+        </div>
+      </Container>
+
+      {/* ==================================================
+          SUBTLE BOTTOM BLEND
+      ================================================== */}
+      <div
+        aria-hidden="true"
+        className="
+          pointer-events-none
+          absolute inset-x-0 bottom-0 z-20
+          h-6
+          bg-gradient-to-t
+          from-[#FAF8F1]
+          to-transparent
+        "
+      />
+    </section>
   );
 }
