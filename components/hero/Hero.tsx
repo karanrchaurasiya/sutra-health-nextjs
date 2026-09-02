@@ -58,7 +58,7 @@ export default function Hero() {
         />
 
         {/* Mobile image fade */}
-        <div
+        {/* <div
           aria-hidden="true"
           className="
             pointer-events-none
@@ -71,7 +71,7 @@ export default function Hero() {
             via-[#FAF8F1]/45
             to-transparent
           "
-        />
+        /> */}
       </div>
 
       {/* ==================================================
@@ -111,6 +111,10 @@ export default function Hero() {
             items-start
 
             pb-10
+              sm:mx-0
+              sm:my-0
+
+
 
             lg:min-h-[620px]
             lg:items-center
@@ -140,8 +144,9 @@ export default function Hero() {
 
 
               sm:-mt-[45px]
-              sm:rounded-t-[10px]
-              
+              sm:rounded-t-[5px]
+              sm:mx-0
+              sm:my-0
 
               lg:mt-0
               lg:rounded-none
