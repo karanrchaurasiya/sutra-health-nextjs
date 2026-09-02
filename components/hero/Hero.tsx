@@ -82,7 +82,7 @@ export default function Hero() {
           <div
             className="
               w-full
-              max-w-[690px]
+              max-w-[700px]
               lg:py-0
             "
           >
@@ -91,13 +91,14 @@ export default function Hero() {
             ================================================== */}
             <p
               className="
-                text-[9px]
+                text-[10px]
                 font-semibold
                 uppercase
                 tracking-[0.2em]
                 text-[#4F8160]
                 sm:text-[10px]
                 lg:text-[11px]
+                sm:mt-4
               "
             >
               Integrative Lifestyle Healthcare
@@ -108,18 +109,19 @@ export default function Hero() {
             ================================================== */}
             <h1
               className="
-                mt-3
-                max-w-[680px]
+                max-w-[690px]
                 font-serif
+                font-bold
                 text-[40px]
                 leading-[0.98]
                 tracking-[-0.045em]
                 text-[#123F35]
                 sm:mt-4
-                sm:text-[52px]
-                md:text-[58px]
-                lg:text-[66px]
-                xl:text-[72px]
+                sm:font-normal
+                sm:text-[40px]
+                md:text-[50px]
+                lg:text-[60px]
+                xl:text-[70px]
               "
             >
               Build better health
@@ -190,6 +192,34 @@ export default function Hero() {
               >
                 Book a Consultation
                 <span aria-hidden="true">→</span>
+              </Link>
+
+              <Link
+                href="/retreat-programs"
+                className="
+                  inline-flex
+                  items-center
+                  justify-center
+                  gap-2
+                  rounded-full
+                  border
+                  border-[#173F35]/15
+                  bg-[#FAF8F1]/80
+                  px-5
+                  py-3
+                  text-[12px]
+                  font-semibold
+                  text-[#173F35]
+                  backdrop-blur-[2px]
+                  transition-all
+                  duration-300
+                  hover:bg-[#FAF8F1]
+                  sm:px-6
+                  sm:py-3.5
+                  sm:text-[13px]
+                "
+              >
+                Book Retreat &amp; Programs
               </Link>
 
               <Link

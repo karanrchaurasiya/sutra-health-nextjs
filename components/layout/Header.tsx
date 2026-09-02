@@ -34,49 +34,63 @@ const conditions = [
   },
 ];
 
-const services = [
+const approach = [
   {
-    label: "Lifestyle Medicine",
-    href: "/services/lifestyle-medicine",
+    label: "Lifestyle",
+    href: "/approach/lifestyle",
   },
   {
-    label: "Integrative Medicine",
-    href: "/services/integrative-medicine",
+    label: "Nutrition",
+    href: "/approach/nutrition",
   },
   {
-    label: "Therapeutic Yoga",
-    href: "/services/therapeutic-yoga",
+    label: "Therapeutic Yoga & Movement",
+    href: "/approach/therapeutic-yoga",
   },
   {
-    label: "Nutrition Counselling",
-    href: "/services/nutrition-counselling",
+    label: "Breath & Mindfulness",
+    href: "/approach/breath-mindfulness",
   },
   {
-    label: "Meditation & Stress Support",
-    href: "/services/meditation-stress-support",
-  },
-  {
-    label: "21-Point Health Assessment",
-    href: "/services/health-assessment",
+    label: "21-Point Lifestyle Assessment",
+    href: "/score",
   },
 ];
 
+const resources = [
+  {
+    label: "Health Articles",
+    href: "/resources/articles",
+  },
+  {
+    label: "Research & Publications",
+    href: "/resources/research",
+  },
+  {
+    label: "Practice Knowledge System",
+    href: "/resources/knowledge-system",
+  },
+  {
+    label: "21-Point Assessment",
+    href: "/score",
+  },
+];
+
+type DropdownName = "conditions" | "approach" | "resources" | null;
+
 export default function Header() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [conditionsOpen, setConditionsOpen] = useState(false);
-  const [servicesOpen, setServicesOpen] = useState(false);
+  const [openDropdown, setOpenDropdown] = useState<DropdownName>(null);
 
   const navRef = useRef<HTMLElement>(null);
 
-  // Close dropdowns when clicking outside
   useEffect(() => {
     function handleClickOutside(event: MouseEvent) {
       if (
         navRef.current &&
         !navRef.current.contains(event.target as Node)
       ) {
-        setConditionsOpen(false);
-        setServicesOpen(false);
+        setOpenDropdown(null);
       }
     }
 
@@ -87,13 +101,11 @@ export default function Header() {
     };
   }, []);
 
-  // Close everything with Escape
   useEffect(() => {
     function handleEscape(event: KeyboardEvent) {
       if (event.key === "Escape") {
         setMobileOpen(false);
-        setConditionsOpen(false);
-        setServicesOpen(false);
+        setOpenDropdown(null);
       }
     }
 
@@ -104,20 +116,13 @@ export default function Header() {
     };
   }, []);
 
-  function toggleConditions() {
-    setConditionsOpen((value) => !value);
-    setServicesOpen(false);
+  function toggleDropdown(name: DropdownName) {
+    setOpenDropdown((current) => (current === name ? null : name));
   }
 
-  function toggleServices() {
-    setServicesOpen((value) => !value);
-    setConditionsOpen(false);
-  }
-
-  function closeMobileMenu() {
+  function closeNavigation() {
     setMobileOpen(false);
-    setConditionsOpen(false);
-    setServicesOpen(false);
+    setOpenDropdown(null);
   }
 
   return (
@@ -128,7 +133,7 @@ export default function Header() {
         <Link
           href="/"
           className="brand"
-          onClick={closeMobileMenu}
+          onClick={closeNavigation}
           aria-label="Sutra Health Home"
         >
           <div className="brandLogo">
@@ -140,6 +145,7 @@ export default function Header() {
 
           <div className="brandText">
             <span className="brandName">Sutra Health</span>
+
             <span className="brandTagline">
               Integrative Lifestyle Healthcare
             </span>
@@ -147,43 +153,65 @@ export default function Header() {
         </Link>
 
         {/* DESKTOP NAV */}
-        <nav className="desktopNav" aria-label="Main navigation">
-
+        <nav
+          className="desktopNav"
+          aria-label="Main navigation"
+        >
           <Link href="/" className="navLink">
             Home
+          </Link>
+
+          <Link href="/about" className="navLink">
+            About
           </Link>
 
           {/* CONDITIONS */}
           <div
             className="navDropdown"
-            onMouseEnter={() => {
-              setConditionsOpen(true);
-              setServicesOpen(false);
-            }}
-            onMouseLeave={() => setConditionsOpen(false)}
+            onMouseEnter={() => setOpenDropdown("conditions")}
+            onMouseLeave={() => setOpenDropdown(null)}
           >
             <button
               type="button"
-              className="navDropdownButton"
-              aria-expanded={conditionsOpen}
-              onClick={toggleConditions}
+              className={`navDropdownButton ${
+                openDropdown === "conditions"
+                  ? "navDropdownButtonOpen"
+                  : ""
+              }`}
+              aria-expanded={openDropdown === "conditions"}
+              onClick={() => toggleDropdown("conditions")}
             >
-              Conditions
+              <span>Conditions</span>
+
               <span
                 className={`chevron ${
-                  conditionsOpen ? "chevronOpen" : ""
+                  openDropdown === "conditions"
+                    ? "chevronOpen"
+                    : ""
                 }`}
-              >
-                ↓
-              </span>
+                aria-hidden="true"
+              />
             </button>
 
-            {conditionsOpen && (
+            {openDropdown === "conditions" && (
               <div className="dropdownMenu">
                 <div className="dropdownHeader">
-                  <span>Conditions</span>
-                  <Link href="/conditions">
-                    View all →
+                  <div>
+                    <span className="dropdownEyebrow">
+                      Health concerns
+                    </span>
+
+                    <span className="dropdownTitle">
+                      Conditions
+                    </span>
+                  </div>
+
+                  <Link
+                    href="/conditions"
+                    onClick={closeNavigation}
+                  >
+                    View all
+                    <span aria-hidden="true">→</span>
                   </Link>
                 </div>
 
@@ -193,20 +221,17 @@ export default function Header() {
                       key={item.href}
                       href={item.href}
                       className="dropdownItem"
-                      onClick={() => {
-                        setConditionsOpen(false);
-                      }}
+                      onClick={closeNavigation}
                     >
-                      <span className="dropdownIcon">✦</span>
+                      <span className="dropdownItemTitle">
+                        {item.label}
+                      </span>
 
-                      <span>
-                        <span className="dropdownItemTitle">
-                          {item.label}
-                        </span>
-
-                        <span className="dropdownArrow">
-                          →
-                        </span>
+                      <span
+                        className="dropdownArrow"
+                        aria-hidden="true"
+                      >
+                        →
                       </span>
                     </Link>
                   ))}
@@ -215,60 +240,73 @@ export default function Header() {
             )}
           </div>
 
-          {/* SERVICES */}
+          {/* APPROACH */}
           <div
             className="navDropdown"
-            onMouseEnter={() => {
-              setServicesOpen(true);
-              setConditionsOpen(false);
-            }}
-            onMouseLeave={() => setServicesOpen(false)}
+            onMouseEnter={() => setOpenDropdown("approach")}
+            onMouseLeave={() => setOpenDropdown(null)}
           >
             <button
               type="button"
-              className="navDropdownButton"
-              aria-expanded={servicesOpen}
-              onClick={toggleServices}
+              className={`navDropdownButton ${
+                openDropdown === "approach"
+                  ? "navDropdownButtonOpen"
+                  : ""
+              }`}
+              aria-expanded={openDropdown === "approach"}
+              onClick={() => toggleDropdown("approach")}
             >
-              Services
+              <span>Approach</span>
+
               <span
                 className={`chevron ${
-                  servicesOpen ? "chevronOpen" : ""
+                  openDropdown === "approach"
+                    ? "chevronOpen"
+                    : ""
                 }`}
-              >
-                ↓
-              </span>
+                aria-hidden="true"
+              />
             </button>
 
-            {servicesOpen && (
-              <div className="dropdownMenu servicesMenu">
+            {openDropdown === "approach" && (
+              <div className="dropdownMenu approachMenu">
                 <div className="dropdownHeader">
-                  <span>Services</span>
-                  <Link href="/services">
-                    View all →
+                  <div>
+                    <span className="dropdownEyebrow">
+                      How we work
+                    </span>
+
+                    <span className="dropdownTitle">
+                      Our Approach
+                    </span>
+                  </div>
+
+                  <Link
+                    href="/approach"
+                    onClick={closeNavigation}
+                  >
+                    Explore
+                    <span aria-hidden="true">→</span>
                   </Link>
                 </div>
 
                 <div className="dropdownGrid">
-                  {services.map((item) => (
+                  {approach.map((item) => (
                     <Link
                       key={item.href}
                       href={item.href}
                       className="dropdownItem"
-                      onClick={() => {
-                        setServicesOpen(false);
-                      }}
+                      onClick={closeNavigation}
                     >
-                      <span className="dropdownIcon">✦</span>
+                      <span className="dropdownItemTitle">
+                        {item.label}
+                      </span>
 
-                      <span>
-                        <span className="dropdownItemTitle">
-                          {item.label}
-                        </span>
-
-                        <span className="dropdownArrow">
-                          →
-                        </span>
+                      <span
+                        className="dropdownArrow"
+                        aria-hidden="true"
+                      >
+                        →
                       </span>
                     </Link>
                   ))}
@@ -277,25 +315,94 @@ export default function Header() {
             )}
           </div>
 
-          <Link href="/doctors" className="navLink">
+          <Link
+            href="/doctors"
+            className="navLink"
+          >
             Doctors &amp; Experts
           </Link>
 
-          <Link href="/how-it-works" className="navLink">
-            How It Works
+          <Link
+            href="/retreat-programs"
+            className="navLink"
+          >
+            Retreat
           </Link>
 
-          <Link href="/patient-stories" className="navLink">
-            Patient Stories
-          </Link>
+          {/* RESOURCES */}
+          <div
+            className="navDropdown"
+            onMouseEnter={() => setOpenDropdown("resources")}
+            onMouseLeave={() => setOpenDropdown(null)}
+          >
+            <button
+              type="button"
+              className={`navDropdownButton ${
+                openDropdown === "resources"
+                  ? "navDropdownButtonOpen"
+                  : ""
+              }`}
+              aria-expanded={openDropdown === "resources"}
+              onClick={() => toggleDropdown("resources")}
+            >
+              <span>Resources</span>
 
-          <Link href="/resources" className="navLink">
-            Resources
-          </Link>
+              <span
+                className={`chevron ${
+                  openDropdown === "resources"
+                    ? "chevronOpen"
+                    : ""
+                }`}
+                aria-hidden="true"
+              />
+            </button>
 
-          <Link href="/about" className="navLink">
-            About
-          </Link>
+            {openDropdown === "resources" && (
+              <div className="dropdownMenu resourcesMenu">
+                <div className="dropdownHeader">
+                  <div>
+                    <span className="dropdownEyebrow">
+                      Learn &amp; explore
+                    </span>
+
+                    <span className="dropdownTitle">
+                      Resources
+                    </span>
+                  </div>
+
+                  <Link
+                    href="/resources"
+                    onClick={closeNavigation}
+                  >
+                    View all
+                    <span aria-hidden="true">→</span>
+                  </Link>
+                </div>
+
+                <div className="dropdownGrid">
+                  {resources.map((item) => (
+                    <Link
+                      key={item.href}
+                      href={item.href}
+                      className="dropdownItem"
+                      onClick={closeNavigation}
+                    >
+                      <span className="dropdownItemTitle">
+                        {item.label}
+                      </span>
+
+                      <span
+                        className="dropdownArrow"
+                        aria-hidden="true"
+                      >
+                        →
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            )}
+          </div>
         </nav>
 
         {/* DESKTOP CTA */}
@@ -304,14 +411,19 @@ export default function Header() {
           className="desktopBookButton"
         >
           <span>Book Appointment</span>
-          <span>→</span>
+          <span aria-hidden="true">→</span>
         </Link>
 
-        {/* MOBILE BUTTON */}
+        {/* MOBILE MENU BUTTON */}
         <button
           type="button"
-          className="mobileMenuButton"
-          onClick={() => setMobileOpen((value) => !value)}
+          className={`mobileMenuButton ${
+            mobileOpen ? "mobileMenuButtonOpen" : ""
+          }`}
+          onClick={() => {
+            setMobileOpen((value) => !value);
+            setOpenDropdown(null);
+          }}
           aria-expanded={mobileOpen}
           aria-label={
             mobileOpen
@@ -320,13 +432,27 @@ export default function Header() {
           }
         >
           <span
-            className={mobileOpen ? "line lineOneOpen" : "line"}
+            className={
+              mobileOpen
+                ? "line lineOneOpen"
+                : "line"
+            }
           />
+
           <span
-            className={mobileOpen ? "line lineTwoOpen" : "line"}
+            className={
+              mobileOpen
+                ? "line lineTwoOpen"
+                : "line"
+            }
           />
+
           <span
-            className={mobileOpen ? "line lineThreeOpen" : "line"}
+            className={
+              mobileOpen
+                ? "line lineThreeOpen"
+                : "line"
+            }
           />
         </button>
       </div>
@@ -342,9 +468,17 @@ export default function Header() {
           <Link
             href="/"
             className="mobileNavLink"
-            onClick={closeMobileMenu}
+            onClick={closeNavigation}
           >
             Home
+          </Link>
+
+          <Link
+            href="/about"
+            className="mobileNavLink"
+            onClick={closeNavigation}
+          >
+            About
           </Link>
 
           {/* MOBILE CONDITIONS */}
@@ -352,32 +486,35 @@ export default function Header() {
             <button
               type="button"
               className="mobileDropdownButton"
-              onClick={toggleConditions}
-              aria-expanded={conditionsOpen}
+              onClick={() =>
+                toggleDropdown("conditions")
+              }
+              aria-expanded={
+                openDropdown === "conditions"
+              }
             >
               <span>Conditions</span>
 
               <span
                 className={`mobileChevron ${
-                  conditionsOpen
+                  openDropdown === "conditions"
                     ? "mobileChevronOpen"
                     : ""
                 }`}
-              >
-                ↓
-              </span>
+                aria-hidden="true"
+              />
             </button>
 
             <div
               className={`mobileDropdownContent ${
-                conditionsOpen
+                openDropdown === "conditions"
                   ? "mobileDropdownContentOpen"
                   : ""
               }`}
             >
               <Link
                 href="/conditions"
-                onClick={closeMobileMenu}
+                onClick={closeNavigation}
               >
                 All Conditions
               </Link>
@@ -386,7 +523,7 @@ export default function Header() {
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={closeMobileMenu}
+                  onClick={closeNavigation}
                 >
                   {item.label}
                 </Link>
@@ -394,46 +531,49 @@ export default function Header() {
             </div>
           </div>
 
-          {/* MOBILE SERVICES */}
+          {/* MOBILE APPROACH */}
           <div className="mobileDropdown">
             <button
               type="button"
               className="mobileDropdownButton"
-              onClick={toggleServices}
-              aria-expanded={servicesOpen}
+              onClick={() =>
+                toggleDropdown("approach")
+              }
+              aria-expanded={
+                openDropdown === "approach"
+              }
             >
-              <span>Services</span>
+              <span>Approach</span>
 
               <span
                 className={`mobileChevron ${
-                  servicesOpen
+                  openDropdown === "approach"
                     ? "mobileChevronOpen"
                     : ""
                 }`}
-              >
-                ↓
-              </span>
+                aria-hidden="true"
+              />
             </button>
 
             <div
               className={`mobileDropdownContent ${
-                servicesOpen
+                openDropdown === "approach"
                   ? "mobileDropdownContentOpen"
                   : ""
               }`}
             >
               <Link
-                href="/services"
-                onClick={closeMobileMenu}
+                href="/approach"
+                onClick={closeNavigation}
               >
-                All Services
+                Our Approach
               </Link>
 
-              {services.map((item) => (
+              {approach.map((item) => (
                 <Link
                   key={item.href}
                   href={item.href}
-                  onClick={closeMobileMenu}
+                  onClick={closeNavigation}
                 >
                   {item.label}
                 </Link>
@@ -444,50 +584,76 @@ export default function Header() {
           <Link
             href="/doctors"
             className="mobileNavLink"
-            onClick={closeMobileMenu}
+            onClick={closeNavigation}
           >
             Doctors &amp; Experts
           </Link>
 
           <Link
-            href="/how-it-works"
+            href="/retreat-programs"
             className="mobileNavLink"
-            onClick={closeMobileMenu}
+            onClick={closeNavigation}
           >
-            How It Works
+            Retreat
           </Link>
 
-          <Link
-            href="/patient-stories"
-            className="mobileNavLink"
-            onClick={closeMobileMenu}
-          >
-            Patient Stories
-          </Link>
+          {/* MOBILE RESOURCES */}
+          <div className="mobileDropdown">
+            <button
+              type="button"
+              className="mobileDropdownButton"
+              onClick={() =>
+                toggleDropdown("resources")
+              }
+              aria-expanded={
+                openDropdown === "resources"
+              }
+            >
+              <span>Resources</span>
 
-          <Link
-            href="/resources"
-            className="mobileNavLink"
-            onClick={closeMobileMenu}
-          >
-            Resources
-          </Link>
+              <span
+                className={`mobileChevron ${
+                  openDropdown === "resources"
+                    ? "mobileChevronOpen"
+                    : ""
+                }`}
+                aria-hidden="true"
+              />
+            </button>
 
-          <Link
-            href="/about"
-            className="mobileNavLink"
-            onClick={closeMobileMenu}
-          >
-            About
-          </Link>
+            <div
+              className={`mobileDropdownContent ${
+                openDropdown === "resources"
+                  ? "mobileDropdownContentOpen"
+                  : ""
+              }`}
+            >
+              <Link
+                href="/resources"
+                onClick={closeNavigation}
+              >
+                All Resources
+              </Link>
+
+              {resources.map((item) => (
+                <Link
+                  key={item.href}
+                  href={item.href}
+                  onClick={closeNavigation}
+                >
+                  {item.label}
+                </Link>
+              ))}
+            </div>
+          </div>
 
           <Link
             href="/book-appointment"
             className="mobileBookButton"
-            onClick={closeMobileMenu}
+            onClick={closeNavigation}
           >
-            Book Appointment
-            <span>→</span>
+            <span>Book Appointment</span>
+            <span aria-hidden="true">→</span>
           </Link>
         </div>
       </div>
