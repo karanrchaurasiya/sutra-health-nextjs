@@ -56,7 +56,7 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 z-10 lg:hidden"
         style={{
           background:
-            "linear-gradient(180deg, rgba(250,248,241,0) 0%, rgba(250,248,241,0.02) 25%, rgba(250,248,241,0.28) 43%, rgba(250,248,241,0.78) 60%, rgba(250,248,241,0.96) 72%, rgba(250,248,241,1) 86%)",
+            "linear-gradient(180deg, rgba(250,248,241,0) 0%, rgba(250,248,241,0.02) 25%, rgba(250,248,241,0.28) 35%, rgba(250,248,241,0.78) 45%, rgba(250,248,241,0.96) 60%, rgba(250,248,241,1) 76%)",
         }}
       />
 
@@ -111,7 +111,7 @@ export default function Hero() {
               className="
                 max-w-[690px]
                 font-serif
-                font-bold
+                font-semibold
                 text-[40px]
                 leading-[0.98]
                 tracking-[-0.045em]
