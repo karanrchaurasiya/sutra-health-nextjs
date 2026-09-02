@@ -38,7 +38,7 @@ export default function Hero() {
       ================================================== */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-10 hidden lg:block"
+        className="pointer-events-none absolute inset-0 z-10 hidden lg:block "
         style={{
           background:
             "linear-gradient(90deg, rgba(250,248,241,1) 0%, rgba(250,248,241,0.98) 27%, rgba(250,248,241,0.88) 38%, rgba(250,248,241,0.60) 47%, rgba(250,248,241,0.25) 56%, rgba(250,248,241,0) 70%)",
@@ -68,7 +68,7 @@ export default function Hero() {
           className="
             relative z-20
             flex
-            min-h-[650px]
+            min-h-[700px]
             items-end
             pb-10
             sm:min-h-[680px]
@@ -82,8 +82,9 @@ export default function Hero() {
           <div
             className="
               w-full
-              max-w-[700px]
+              max-w-[850px]
               lg:py-0
+              sm:mt-8
             "
           >
             {/* ==================================================
@@ -98,7 +99,6 @@ export default function Hero() {
                 text-[#4F8160]
                 sm:text-[10px]
                 lg:text-[11px]
-                sm:mt-4
               "
             >
               Integrative Lifestyle Healthcare
@@ -109,9 +109,8 @@ export default function Hero() {
             ================================================== */}
             <h1
               className="
-                max-w-[690px]
+                max-w-[700px]
                 font-serif
-                font-semibold
                 text-[40px]
                 leading-[0.98]
                 tracking-[-0.045em]
