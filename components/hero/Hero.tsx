@@ -38,7 +38,7 @@ export default function Hero() {
       ================================================== */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-10 hidden lg:block "
+        className="pointer-events-none absolute inset-0 z-10 hidden lg:block"
         style={{
           background:
             "linear-gradient(90deg, rgba(250,248,241,1) 0%, rgba(250,248,241,0.98) 27%, rgba(250,248,241,0.88) 38%, rgba(250,248,241,0.60) 47%, rgba(250,248,241,0.25) 56%, rgba(250,248,241,0) 70%)",
@@ -56,7 +56,7 @@ export default function Hero() {
         className="pointer-events-none absolute inset-0 z-10 lg:hidden"
         style={{
           background:
-            "linear-gradient(180deg, rgba(250,248,241,0) 0%, rgba(250,248,241,0.02) 25%, rgba(250,248,241,0.28) 35%, rgba(250,248,241,0.78) 45%, rgba(250,248,241,0.96) 60%, rgba(250,248,241,1) 76%)",
+            "linear-gradient(180deg, rgba(250,248,241,0) 10%, rgba(250,248,241,0.02) 20%, rgba(250,248,241,0.28) 33%, rgba(250,248,241,0.78) 58%, rgba(250,248,241,0.96) 72%, rgba(250,248,241,1) 86%)",
         }}
       />
 
@@ -68,7 +68,7 @@ export default function Hero() {
           className="
             relative z-20
             flex
-            min-h-[700px]
+            min-h-[650px]
             items-end
             pb-10
             sm:min-h-[680px]
@@ -82,9 +82,8 @@ export default function Hero() {
           <div
             className="
               w-full
-              max-w-[850px]
+              max-w-[700px]
               lg:py-0
-              sm:mt-8
             "
           >
             {/* ==================================================
@@ -109,14 +108,15 @@ export default function Hero() {
             ================================================== */}
             <h1
               className="
-                max-w-[700px]
+                max-w-[690px]
                 font-serif
+                font-medium
                 text-[40px]
                 leading-[0.98]
                 tracking-[-0.045em]
                 text-[#123F35]
                 sm:mt-4
-                sm:font-normal
+                sm:font-medium
                 sm:text-[40px]
                 md:text-[50px]
                 lg:text-[60px]
