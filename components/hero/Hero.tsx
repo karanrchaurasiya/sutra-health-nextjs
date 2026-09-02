@@ -14,49 +14,86 @@ export default function Hero() {
         fill
         priority
         sizes="100vw"
-        className="z-0 hidden object-cover object-center lg:block"
+        className="
+          z-0
+          hidden
+          object-cover
+          object-center
+          lg:block
+        "
       />
 
       {/* ==================================================
-          MOBILE BACKGROUND
+          MOBILE IMAGE
+
+          Mobile uses a controlled image area instead of
+          forcing the complete hero to behave like a
+          background image.
       ================================================== */}
-      <Image
-        src="/images/hero-desktop56.png"
-        alt="Sutra Health consultation"
-        fill
-        priority
-        sizes="100vw"
-        className="z-0 block object-cover object-center lg:hidden"
-      />
+      <div
+        className="
+          relative
+          z-0
+          block
+          h-[360px]
+          w-full
+          sm:h-[410px]
+          lg:hidden
+        "
+      >
+        <Image
+          src="/images/hero-desktop56.png"
+          alt="Sutra Health consultation"
+          fill
+          priority
+          sizes="
+            (max-width: 480px) 100vw,
+            (max-width: 640px) 100vw,
+            100vw
+          "
+          className="
+            object-cover
+            object-[50%_18%]
+          "
+        />
+
+        {/* Mobile image fade */}
+        <div
+          aria-hidden="true"
+          className="
+            pointer-events-none
+            absolute
+            inset-x-0
+            bottom-0
+            h-[190px]
+            bg-gradient-to-t
+            from-[#FAF8F1]
+            via-[#FAF8F1]/45
+            to-transparent
+          "
+        />
+      </div>
 
       {/* ==================================================
           DESKTOP OVERLAY
-          
+
           Cream on left
           Smooth fade in centre
           Clear image on right
       ================================================== */}
       <div
         aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-10 hidden lg:block"
+        className="
+          pointer-events-none
+          absolute
+          inset-0
+          z-10
+          hidden
+          lg:block
+        "
         style={{
           background:
             "linear-gradient(90deg, rgba(250,248,241,1) 0%, rgba(250,248,241,0.98) 27%, rgba(250,248,241,0.88) 38%, rgba(250,248,241,0.60) 47%, rgba(250,248,241,0.25) 56%, rgba(250,248,241,0) 70%)",
-        }}
-      />
-
-      {/* ==================================================
-          MOBILE OVERLAY
-
-          Image remains visible at top.
-          Cream gradually appears behind text.
-      ================================================== */}
-      <div
-        aria-hidden="true"
-        className="pointer-events-none absolute inset-0 z-10 lg:hidden"
-        style={{
-          background:
-            "linear-gradient(180deg, rgba(250,248,241,0) 10%, rgba(250,248,241,0.02) 20%, rgba(250,248,241,0.28) 33%, rgba(250,248,241,0.78) 58%, rgba(250,248,241,0.96) 72%, rgba(250,248,241,1) 86%)",
         }}
       />
 
@@ -66,24 +103,51 @@ export default function Hero() {
       <Container>
         <div
           className="
-            relative z-20
+            relative
+            z-20
+
             flex
-            min-h-[650px]
-            items-end
+            min-h-0
+            items-start
+
             pb-10
-            sm:min-h-[680px]
-            sm:pb-12
+
             lg:min-h-[620px]
             lg:items-center
             lg:pb-0
+
             xl:min-h-[650px]
           "
         >
           <div
             className="
+              relative
+              z-20
               w-full
               max-w-[700px]
-              lg:py-0
+
+              /* Mobile content overlaps the bottom
+                 of the image slightly */
+              -mt-[48px]
+
+              rounded-t-[28px]
+
+              bg-[#FAF8F1]
+
+              px-5
+              pt-7
+              pb-2
+
+
+              sm:-mt-[45px]
+              sm:rounded-t-[10px]
+              
+
+              lg:mt-0
+              lg:rounded-none
+              lg:bg-transparent
+              lg:px-0
+              lg:pt-0
             "
           >
             {/* ==================================================
@@ -91,14 +155,18 @@ export default function Hero() {
             ================================================== */}
             <p
               className="
-                text-[10px]
+                text-[9px]
                 font-semibold
                 uppercase
-                tracking-[0.2em]
+                tracking-[0.18em]
                 text-[#4F8160]
+
                 sm:text-[10px]
+                sm:tracking-[0.2em]
+
                 lg:text-[11px]
-                sm:mt-2
+                mb-5
+               
               "
             >
               Integrative Lifestyle Healthcare
@@ -109,18 +177,27 @@ export default function Hero() {
             ================================================== */}
             <h1
               className="
+                mt-3
                 max-w-[690px]
+
                 font-serif
-                font-medium
-                text-[40px]
+                font-bold
+
+                text-[38px]
                 leading-[0.98]
                 tracking-[-0.045em]
+
                 text-[#123F35]
+
                 sm:mt-4
-                sm:font-medium
-                sm:text-[40px]
-                md:text-[50px]
+                sm:text-[45px]
+
+                md:text-[52px]
+
+                lg:mt-0
                 lg:text-[60px]
+                lg:font-medium
+
                 xl:text-[70px]
               "
             >
@@ -135,13 +212,19 @@ export default function Hero() {
             <p
               className="
                 mt-4
+
                 max-w-[590px]
+
                 text-[12px]
-                leading-5
+                font-medium
+                leading-[1.65]
+
                 text-[#245B70]
+
                 sm:mt-5
                 sm:text-[14px]
                 sm:leading-7
+
                 lg:text-[15px]
                 lg:leading-7
               "
@@ -158,9 +241,11 @@ export default function Hero() {
             <div
               className="
                 mt-5
+
                 flex
                 flex-col
                 gap-2.5
+
                 sm:mt-6
                 sm:flex-row
                 sm:flex-wrap
@@ -168,52 +253,86 @@ export default function Hero() {
                 sm:gap-3
               "
             >
+              {/* PRIMARY CTA */}
               <Link
                 href="/book-appointment"
                 className="
                   inline-flex
+                  min-h-[52px]
+                  w-full
+
                   items-center
                   justify-center
                   gap-2
+
                   rounded-full
+
                   bg-[#173F35]
+
                   px-5
                   py-3
+
                   text-[12px]
                   font-semibold
+
                   text-white
-                  transition-colors
+
+                  transition-all
                   duration-300
+
                   hover:bg-[#12352D]
+
+                  active:scale-[0.99]
+
+                  sm:min-h-0
+                  sm:w-auto
                   sm:px-6
                   sm:py-3.5
                   sm:text-[13px]
                 "
               >
                 Book a Consultation
-                <span aria-hidden="true">→</span>
+                <span aria-hidden="true" className="text-[14px]">
+                  →
+                </span>
               </Link>
 
+              {/* SECONDARY CTA */}
               <Link
                 href="/retreat-programs"
                 className="
                   inline-flex
+                  min-h-[52px]
+                  w-full
+
                   items-center
                   justify-center
                   gap-2
+
                   rounded-full
+
                   border
                   border-[#173F35]/15
-                  bg-[#FAF8F1]/80
+
+                  bg-[#FAF8F1]
+
                   px-5
                   py-3
+
                   text-[12px]
                   font-semibold
+
                   text-[#173F35]
-                  backdrop-blur-[2px]
+
                   transition-all
                   duration-300
-                  hover:bg-[#FAF8F1]
+
+                  hover:bg-[#F0F4ED]
+
+                  active:scale-[0.99]
+
+                  sm:min-h-0
+                  sm:w-auto
                   sm:px-6
                   sm:py-3.5
                   sm:text-[13px]
@@ -222,26 +341,42 @@ export default function Hero() {
                 Book Retreat &amp; Programs
               </Link>
 
+              {/* ASSESSMENT CTA */}
               <Link
                 href="/score"
                 className="
                   inline-flex
+                  min-h-[52px]
+                  w-full
+
                   items-center
                   justify-center
                   gap-2
+
                   rounded-full
+
                   border
                   border-[#173F35]/15
-                  bg-[#FAF8F1]/80
+
+                  bg-[#FAF8F1]
+
                   px-5
                   py-3
+
                   text-[12px]
                   font-semibold
+
                   text-[#173F35]
-                  backdrop-blur-[2px]
+
                   transition-all
                   duration-300
-                  hover:bg-[#FAF8F1]
+
+                  hover:bg-[#F0F4ED]
+
+                  active:scale-[0.99]
+
+                  sm:min-h-0
+                  sm:w-auto
                   sm:px-6
                   sm:py-3.5
                   sm:text-[13px]
@@ -261,11 +396,21 @@ export default function Hero() {
         aria-hidden="true"
         className="
           pointer-events-none
-          absolute inset-x-0 bottom-0 z-20
+
+          absolute
+          inset-x-0
+          bottom-0
+          z-20
+
+          hidden
+
           h-6
+
           bg-gradient-to-t
           from-[#FAF8F1]
           to-transparent
+
+          lg:block
         "
       />
     </section>
