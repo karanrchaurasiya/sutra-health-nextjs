@@ -58,7 +58,7 @@ export default function Hero() {
         />
 
         {/* Mobile image fade */}
-        {/* <div
+        <div
           aria-hidden="true"
           className="
             pointer-events-none
@@ -68,10 +68,10 @@ export default function Hero() {
             h-[190px]
             bg-gradient-to-t
             from-[#FAF8F1]
-            via-[#FAF8F1]/45
+            via-[#FAF8F1]/20
             to-transparent
           "
-        /> */}
+        />
       </div>
 
       {/* ==================================================
@@ -134,7 +134,7 @@ export default function Hero() {
                  of the image slightly */
               -mt-[48px]
 
-              rounded-t-[28px]
+              rounded-t-[10px]
 
               bg-[#FAF8F1]
 
@@ -144,7 +144,7 @@ export default function Hero() {
 
 
               sm:-mt-[45px]
-              sm:rounded-t-[5px]
+              sm:rounded-t-[20px]
               sm:mx-0
               sm:my-0
 
