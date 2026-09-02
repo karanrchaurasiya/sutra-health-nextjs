@@ -1,0 +1,58 @@
+.sutra-chatbot__launcher {
+  position: fixed;
+  right: 24px;
+  bottom: 24px;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  border: 0;
+  border-radius: 999px;
+  padding: 13px 17px;
+  background: #123f35;
+  color: #fff;
+  box-shadow: 0 14px 35px rgba(18, 63, 53, .24);
+  cursor: pointer;
+  font: inherit;
+  font-size: 13px;
+  font-weight: 600;
+}
+.sutra-chatbot__launcher:hover { transform: translateY(-1px); }
+.sutra-chatbot__launcher-icon { font-size: 17px; line-height: 1; }
+.sutra-chatbot {
+  position: fixed;
+  right: 24px;
+  bottom: 82px;
+  z-index: 9999;
+  width: min(390px, calc(100vw - 32px));
+  overflow: hidden;
+  border: 1px solid #dfe8df;
+  border-radius: 20px;
+  background: #faf8f1;
+  box-shadow: 0 24px 70px rgba(18, 63, 53, .20);
+}
+.sutra-chatbot__header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 18px 19px;
+  background: #123f35;
+  color: white;
+}
+.sutra-chatbot__header div { display: grid; gap: 3px; }
+.sutra-chatbot__header strong { font-family: Georgia, serif; font-size: 18px; font-weight: 500; }
+.sutra-chatbot__eyebrow { font-size: 9px; letter-spacing: .18em; opacity: .7; }
+.sutra-chatbot__header button { border: 0; background: transparent; color: white; font-size: 27px; cursor: pointer; line-height: 1; }
+.sutra-chatbot__messages { max-height: 300px; overflow-y: auto; padding: 18px; display: grid; gap: 10px; }
+.sutra-chatbot__message { max-width: 88%; padding: 11px 13px; border-radius: 14px; font-size: 13px; line-height: 1.55; }
+.sutra-chatbot__message--bot { justify-self: start; background: #eaf1e9; color: #29483f; border-bottom-left-radius: 5px; }
+.sutra-chatbot__message--user { justify-self: end; background: #123f35; color: #fff; border-bottom-right-radius: 5px; }
+.sutra-chatbot__options { display: grid; gap: 8px; padding: 0 18px 15px; }
+.sutra-chatbot__options button { width: 100%; text-align: left; border: 1px solid #cbd9cc; border-radius: 11px; padding: 10px 12px; background: #fff; color: #123f35; cursor: pointer; font: inherit; font-size: 12px; transition: .18s ease; }
+.sutra-chatbot__options button:hover { background: #eef4ed; border-color: #9db9a0; }
+.sutra-chatbot__footer { display: flex; justify-content: space-between; align-items: center; border-top: 1px solid #e1e7df; padding: 10px 18px; color: #71817a; font-size: 10px; }
+.sutra-chatbot__footer button { border: 0; background: transparent; padding: 0; color: #48705f; cursor: pointer; font: inherit; font-weight: 600; }
+@media (max-width: 520px) {
+  .sutra-chatbot__launcher { right: 16px; bottom: 16px; }
+  .sutra-chatbot { right: 16px; bottom: 72px; width: calc(100vw - 32px); }
+}

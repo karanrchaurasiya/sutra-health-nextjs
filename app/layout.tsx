@@ -3,6 +3,7 @@ import "./globals.css";
 
 import Header from "@/components/layout/Header";
 import Footer from "@/components/hero/Footer";
+import Chatbot from "@/components/chatbot/Chatbot";
 
 const siteUrl = "https://lifequality.org.in";
 
@@ -58,6 +59,7 @@ export default function RootLayout({
       <body>
         <Header />
         {children}
+        <Chatbot />
         <Footer />
       </body>
     </html>

@@ -307,7 +307,7 @@ export default function AboutPage() {
               <div className="relative h-[380px] sm:h-[440px]">
 
                 <Image
-                  src="/images/doctor.png"
+                  src="/images/doctor.jpeg"
                   alt="Dr. Rakesh Sarwal"
                   fill
                   sizes="360px"
@@ -460,7 +460,7 @@ export default function AboutPage() {
 
               <iframe
                 className="absolute inset-0 h-full w-full"
-                src="https://www.youtube.com/embed/YOUR_VIDEO_ID"
+                src="https://www.youtube.com/embed/izgvAGiWhA0?si=jgvabZZcoxpYISyR"
                 title="EQUAL Society Video"
                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
                 allowFullScreen
