@@ -134,7 +134,7 @@ export default function Hero() {
                  of the image slightly */
               -mt-[48px]
 
-              rounded-t-[10px]
+              rounded-t-[15px]
 
               bg-[#FAF8F1]
 
