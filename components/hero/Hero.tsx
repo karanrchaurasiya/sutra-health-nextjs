@@ -98,6 +98,7 @@ export default function Hero() {
                 text-[#4F8160]
                 sm:text-[10px]
                 lg:text-[11px]
+                sm:mt-2
               "
             >
               Integrative Lifestyle Healthcare
