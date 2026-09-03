@@ -526,6 +526,68 @@ export default function RetreatProgramsPage() {
       </section>
 
       {/* ==================================================
+          PLANNING YOUR RETREAT
+      ================================================== */}
+      <section className="border-t border-[#173F35]/10 bg-[#FAF8F1]">
+        <Container>
+          <div className="grid gap-8 py-12 sm:py-16 lg:grid-cols-[0.8fr_1.2fr] lg:items-center lg:gap-20 lg:py-18">
+            <div>
+              <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F]">
+                Planning Your Retreat
+              </p>
+
+              <h2 className="mt-3 max-w-[500px] font-serif text-[34px] leading-[1.05] tracking-[-0.035em] text-[#123F35] sm:text-[44px]">
+                Have questions before{" "}
+                <span className="italic text-[#65966F]">you book?</span>
+              </h2>
+            </div>
+
+            <div className="max-w-[680px]">
+              <p className="text-[14px] leading-7 text-[#687A73] sm:text-[15px] sm:leading-8">
+                If you would like to understand the stay, available wellness
+                practices or how to plan your retreat, speak with the Sutra
+                Health team directly.
+              </p>
+
+              <div className="mt-6 flex flex-wrap gap-3">
+                <a
+                  href="https://wa.me/919013103676?text=Hi%20Sutra%20Health%2C%20I%20want%20to%20know%20more%20about%20your%20wellness%20retreat%20in%20Faridabad."
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full bg-[#173F35] px-6 py-3.5 text-[13px] font-semibold text-white transition-colors hover:bg-[#12352D]"
+                >
+                  Enquire on WhatsApp
+                  <span aria-hidden="true">↗</span>
+                </a>
+
+                <a
+                  href="https://bookretreats.com/r/6-day-rejuvenation-in-nature-moments-from-civilization-in-india"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="inline-flex items-center gap-2 rounded-full border border-[#173F35]/15 bg-[#FAF8F1] px-6 py-3.5 text-[13px] font-semibold text-[#173F35] transition-colors hover:bg-[#F0F4ED]"
+                >
+                  View Booking
+                  <span aria-hidden="true">↗</span>
+                </a>
+              </div>
+
+              <p className="mt-5 text-[12px] leading-6 text-[#71817A]">
+                For general enquiries, location details and other ways to reach
+                us, visit{" "}
+                <Link
+                  href="/contact"
+                  className="font-semibold text-[#173F35] underline underline-offset-4 hover:text-[#65966F]"
+                >
+                  Contact Sutra Health
+                </Link>
+                .
+              </p>
+            </div>
+          </div>
+        </Container>
+      </section>
+
+      {/* ==================================================
           BOOKING CTA
       ================================================== */}
       <section className="bg-[#173F35]">

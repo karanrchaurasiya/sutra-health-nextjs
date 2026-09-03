@@ -40,10 +40,6 @@ const about = [
     href: "/doctors",
   },
   {
-    label: "Our Philosophy",
-    href: "/about/philosophy",
-  },
-  {
     label: "Volunteer",
     href: "/volunteer",
   },
@@ -53,10 +49,6 @@ const approach = [
   {
     label: "The Sutra Health Method",
     href: "/approach",
-  },
-  {
-    label: "Why Integrative Medicine?",
-    href: "/approach/integrative-medicine",
   },
   {
     label: "Lifestyle Medicine",
@@ -73,14 +65,6 @@ const approach = [
   {
     label: "Breath & Mindfulness",
     href: "/approach/breath-mindfulness",
-  },
-  {
-    label: "Behaviour Change",
-    href: "/approach/behaviour-change",
-  },
-  {
-    label: "Health Education",
-    href: "/approach/health-education",
   },
   {
     label: "21-Point Lifestyle Assessment",
@@ -445,6 +429,10 @@ export default function Header() {
             eyebrow="How we work"
             title="The Sutra Health Method"
             items={approach}
+            viewAll={{
+              label: "View all",
+              href: "/approach",
+            }}
             openDropdown={openDropdown}
             toggleDropdown={toggleDropdown}
             closeNavigation={closeNavigation}
@@ -492,6 +480,10 @@ export default function Header() {
             Gallery
           </Link>
         </nav>
+
+        <Link href="/contact" className="navLink">
+            Contact
+          </Link>
 
         {/* DESKTOP CTA */}
         <Link

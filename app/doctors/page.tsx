@@ -25,9 +25,9 @@ export const metadata: Metadata = {
 const experts = [
   {
     name: "Dr. Rakesh Sarwal",
-    role: "MBBS, MPH, DrPH",
+    role: "MBBS, MPH, DrPH (Johns Hopkins), Therapeutic Yoga Consultant",
     description:
-      "Dr. Rakesh Sarwal is a healthcare professional and researcher whose work focuses on preventive healthcare, lifestyle medicine and evidence-based approaches to long-term health and wellbeing.",
+      "Public Health physician, Professor of Community Medicine and Head of the Integrated Health Clinic at ESIC Medical College & Hospital, Faridabad. His academic work spans lifestyle medicine, nutrition, yoga, health systems for universal health coverage and public health policy.",
     image: "/images/doctor.jpeg",
     profileUrl: "https://academic.lifequality.org.in/",
     featured: true,
@@ -55,25 +55,25 @@ const expertise = [
     number: "01",
     title: "Lifestyle Medicine",
     description:
-      "Research and practice focused on how everyday habits, including nutrition, physical activity, sleep, stress management and behaviour change, relate to health.",
+      "Academic and clinical interests in lifestyle therapies and practical approaches to supporting healthier living and prevention.",
   },
   {
     number: "02",
-    title: "Preventive Healthcare",
+    title: "Nutrition",
     description:
-      "A focus on prevention, health awareness and practical lifestyle strategies that may support long-term health and quality of life.",
+      "Research and academic work covering nutrition indicators, dietary diversity and nutrition-related public health.",
   },
   {
     number: "03",
-    title: "Metabolic & Cardiometabolic Health",
+    title: "Yoga",
     description:
-      "Work exploring nutrition, physical activity, weight management, sleep and lifestyle factors relevant to healthy metabolic and cardiovascular function.",
+      "Therapeutic Yoga is part of Dr. Sarwal's professional expertise and his broader lifestyle-health work.",
   },
   {
     number: "04",
-    title: "Digestive & Women's Health",
+    title: "Health Systems & Public Health Policy",
     description:
-      "Research interests include lifestyle factors related to digestive wellbeing, women's wellness, hormonal health, nutrition and menstrual wellbeing.",
+      "Work spanning health systems for universal health coverage and public health policy alongside clinical and academic interests.",
   },
 ];
 
@@ -159,20 +159,20 @@ export default function DoctorsPage() {
               </h2>
 
               <p className="mt-2 text-[10px] font-semibold uppercase tracking-[0.16em] text-[#65966F]">
-                MBBS, MPH, DrPH
+                MBBS, MPH, DrPH (Johns Hopkins), Therapeutic Yoga Consultant
               </p>
 
               <p className="mt-6 max-w-[650px] text-[14px] leading-7 text-[#687A73] sm:text-[15px] sm:leading-8">
-                Dr. Rakesh Sarwal focuses on preventive healthcare and
-                lifestyle medicine research. His work examines how
-                evidence-based lifestyle strategies may contribute to
-                long-term health and wellbeing.
+                Public Health physician, Professor of Community Medicine and
+                Head of the Integrated Health Clinic at ESIC Medical College &
+                Hospital, Faridabad, India.
               </p>
 
               <p className="mt-4 max-w-[650px] text-[14px] leading-7 text-[#687A73] sm:text-[15px] sm:leading-8">
-                His areas of interest include lifestyle modification,
-                preventive healthcare, metabolic health, digestive health and
-                women's health.
+                His academic expertise includes Lifestyle Medicine, Nutrition,
+                Yoga, Health Systems for Universal Health Coverage and Public
+                Health Policy. His research interests explore the effectiveness
+                of lifestyle therapies across chronic conditions.
               </p>
 
               <div className="mt-7 border-t border-[#173F35]/10 pt-6">
@@ -182,12 +182,11 @@ export default function DoctorsPage() {
 
                 <div className="mt-4 grid gap-x-8 gap-y-3 sm:grid-cols-2">
                   {[
-                    "Healthcare & research",
-                    "Lifestyle medicine",
-                    "Preventive healthcare",
-                    "Chronic disease management",
-                    "Evidence-based healthcare",
-                    "Patient-focused wellness",
+                    "Lifestyle Medicine",
+                    "Nutrition",
+                    "Yoga",
+                    "Health Systems for UHC",
+                    "Public Health Policy",
                   ].map((item) => (
                     <div
                       key={item}
@@ -286,34 +285,73 @@ export default function DoctorsPage() {
             <div className="grid gap-8 lg:grid-cols-[0.65fr_1.35fr] lg:gap-20">
               <div>
                 <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F]">
-                  Research & expertise
+                  Research & academic work
                 </p>
 
                 <h2 className="mt-3 font-serif text-[36px] leading-[1.05] tracking-[-0.035em] text-[#123F35] sm:text-[46px]">
-                  Understanding health through{" "}
+                  Research across{" "}
                   <span className="italic text-[#65966F]">
-                    lifestyle research.
+                    lifestyle, nutrition and public health.
                   </span>
                 </h2>
               </div>
 
               <div className="max-w-[720px]">
                 <p className="text-[14px] leading-7 text-[#687A73] sm:text-[15px] sm:leading-8">
-                  Lifestyle medicine studies how daily habits such as
-                  nutrition, physical activity, sleep, stress management and
-                  behaviour changes relate to overall health.
+                  Dr. Rakesh Sarwal&apos;s academic profile identifies Lifestyle
+                  Medicine, Nutrition and Yoga as areas of expertise, alongside
+                  Health Systems for Universal Health Coverage and Public Health
+                  Policy.
                 </p>
 
                 <p className="mt-4 text-[14px] leading-7 text-[#687A73] sm:text-[15px] sm:leading-8">
-                  Research in this field helps explore preventive strategies,
-                  lifestyle patterns and approaches that may support long-term
-                  health and quality of life.
+                  His stated research interests include exploring the
+                  effectiveness of lifestyle therapies across a spectrum of
+                  chronic conditions. The selected work below provides a direct
+                  route to the underlying academic publications.
                 </p>
               </div>
             </div>
 
             <div className="mt-10 grid gap-px overflow-hidden rounded-[18px] border border-[#173F35]/10 bg-[#173F35]/10 sm:grid-cols-2">
-              {expertise.map((item) => (
+              {[
+                {
+                  number: "01",
+                  title:
+                    "A traffic light approach to lifestyle change",
+                  description:
+                    "Health building guideline for NCD outpatients in India · Journal of Family Medicine and Primary Care · 2026",
+                  href: "https://academic.lifequality.org.in/publication/2026-a-traffic-light-approach-to-lifestyle-change-health-building",
+                  label: "Read publication",
+                },
+                {
+                  number: "02",
+                  title:
+                    "Remission of Irritable Bowel Syndrome through diet, lifestyle modification and yoga",
+                  description:
+                    "Case report exploring a combined lifestyle approach to IBS · 2026",
+                  href: "https://www.preprints.org/manuscript/202603.0183",
+                  label: "Read case report",
+                },
+                {
+                  number: "03",
+                  title:
+                    "Dietary diversity and micronutrient deficiencies in India",
+                  description:
+                    "Academic work examining dietary diversity as a sustainable public-health approach · 2022",
+                  href: "https://academic.lifequality.org.in/",
+                  label: "Explore research",
+                },
+                {
+                  number: "04",
+                  title:
+                    "Key nutrition indicators from NFHS-4 and NFHS-5",
+                  description:
+                    "Analysis of national and State/UT nutrition indicators and trends · 2022",
+                  href: "https://academic.lifequality.org.in/publication/2022-analysis-of-key-nutrition-indicators-based-on-national-famil",
+                  label: "Read publication",
+                },
+              ].map((item) => (
                 <article
                   key={item.number}
                   className="bg-[#FAF8F1] p-6 sm:p-7"
@@ -329,6 +367,16 @@ export default function DoctorsPage() {
                   <p className="mt-3 text-[12px] leading-5 text-[#71817A] sm:text-[13px] sm:leading-6">
                     {item.description}
                   </p>
+
+                  <a
+                    href={item.href}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="mt-5 inline-flex items-center gap-2 text-[12px] font-semibold text-[#173F35] transition-colors hover:text-[#65966F]"
+                  >
+                    {item.label}
+                    <span aria-hidden="true">↗</span>
+                  </a>
                 </article>
               ))}
             </div>
@@ -340,7 +388,7 @@ export default function DoctorsPage() {
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#173F35] transition-colors hover:text-[#65966F]"
               >
-                Explore academic research
+                View academic profile & publications
                 <span aria-hidden="true">↗</span>
               </a>
             </div>
@@ -356,17 +404,17 @@ export default function DoctorsPage() {
           <div className="py-14 sm:py-18 lg:py-20">
             <div className="mx-auto max-w-[850px] text-center">
               <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#B7CCB8]">
-                Doctor&apos;s message
+                Doctor&apos;s perspective
               </p>
 
-              <blockquote className="mt-5 font-serif text-[28px] leading-[1.25] tracking-[-0.025em] text-[#FAF8F1] sm:text-[36px] lg:text-[42px]">
-                &ldquo;Healthcare should focus not only on treating disease but
-                also on preventing illness. Lifestyle medicine empowers people
-                to make informed decisions and create healthier lives.&rdquo;
-              </blockquote>
+              <p className="mt-5 font-serif text-[28px] leading-[1.25] tracking-[-0.025em] text-[#FAF8F1] sm:text-[36px] lg:text-[42px]">
+                Dr. Sarwal&apos;s work is centred on prevention, healthy
+                lifestyles and helping people take greater responsibility for
+                their health.
+              </p>
 
               <p className="mt-5 text-[11px] font-semibold uppercase tracking-[0.16em] text-[#B7CCB8]">
-                Dr. Rakesh Sarwal
+                Based on his academic profile
               </p>
 
               <a
@@ -375,7 +423,7 @@ export default function DoctorsPage() {
                 rel="noopener noreferrer"
                 className="mt-6 inline-flex items-center gap-2 rounded-full border border-white/20 px-5 py-2.5 text-[12px] font-semibold text-white transition-colors hover:bg-white/10"
               >
-                Visit Academic Profile
+                Read academic profile
                 <span aria-hidden="true">↗</span>
               </a>
             </div>
