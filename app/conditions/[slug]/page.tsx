@@ -4,7 +4,10 @@ import Link from "next/link";
 import { notFound } from "next/navigation";
 
 import Container from "@/components/shared/Container";
-import { conditions, getCondition } from "@/data/conditions";
+import {
+  conditions,
+  getCondition,
+} from "@/data/conditions";
 
 function slugify(value: string) {
   return value
@@ -86,7 +89,9 @@ export async function generateMetadata({
    PAGE
 ========================================================= */
 
-export default async function ConditionPage({ params }: ConditionPageProps) {
+export default async function ConditionPage({
+  params,
+}: ConditionPageProps) {
   const { slug } = await params;
 
   const condition = getCondition(slug);
@@ -99,12 +104,7 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
      Related conditions
   ------------------------------------------------------- */
 
-  const internalLinks =
-    (
-      condition as typeof condition & {
-        internalLinks?: { label: string; href: string }[];
-      }
-    ).internalLinks ?? [];
+  const internalLinks = condition.internalLinks;
 
   const relatedConditions = condition.relatedConditions
     .map((relatedSlug) => getCondition(relatedSlug))
@@ -199,98 +199,49 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
       />
 
       <main className="bg-[#FAF8F1]">
-        {/* ===================================================
-            HERO
-        =================================================== */}
 
-        <section className="relative overflow-hidden border-b border-[#173F35]/10 bg-[#FAF8F1]">
+    {/* HERO */}
+        <section className="border-b border-[#173F35]/10">
           <Container>
-            <div className="grid min-h-[440px] items-center gap-10 py-8 sm:py-10 lg:grid-cols-[1fr_0.9fr] lg:gap-14 lg:py-16">
-              {/* Content */}
-
-              <div className="relative z-10 max-w-2xl">
+            <div className="grid items-center gap-10 py-12 sm:py-16 lg:grid-cols-2 lg:gap-16 lg:py-20">
+              <div className="max-w-xl">
                 <Link
                   href="/conditions"
-                  className="inline-flex items-center text-[12px] font-medium text-[#65966F] transition-colors hover:text-[#173F35]"
+                  className="text-[12px] font-medium text-[#65966F] hover:text-[#173F35]"
                 >
-                  ← All conditions
+                  ← Health conditions
                 </Link>
 
-                <p className="mt-7 text-[10px] font-semibold uppercase tracking-[0.22em] text-[#65966F] sm:text-[11px]">
-                  Health & wellbeing
+                <p className="mt-10 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F]">
+                  Sutra Health
                 </p>
 
-                <h1 className="mt-3 font-serif text-[46px] leading-[0.98] tracking-[-0.045em] text-[#123F35] sm:text-[58px] lg:text-[68px]">
+                <h1 className="mt-3 font-serif text-5xl leading-[1] tracking-[-0.05em] text-[#123F35] sm:text-6xl lg:text-[68px]">
                   {condition.title}
                 </h1>
 
-                <p className="mt-4 max-w-2xl text-[15px] leading-7 text-[#687A73] sm:text-[17px] sm:leading-8">
+                <p className="mt-6 max-w-lg text-[16px] leading-8 text-[#60736B] sm:text-[18px]">
                   {condition.shortDescription}
                 </p>
 
-                <div className="mt-6 flex flex-col gap-3 sm:flex-row">
-                  <Link
-                    href="/book-appointment"
-                    className="inline-flex h-12 items-center justify-center gap-2 rounded-full bg-[#123F35] px-7 text-[13px] font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#0D332C]"
-                  >
-                    Book an Appointment
-                    <span aria-hidden="true">→</span>
-                  </Link>
-
-                  <Link
-                    href="#understanding"
-                    className="inline-flex h-12 items-center justify-center rounded-full border border-[#173F35]/15 bg-white/70 px-7 text-[13px] font-semibold text-[#173F35] transition hover:bg-white"
-                  >
-                    Learn more
-                  </Link>
-                </div>
-
-                {/* Small trust statement */}
-
-                <div className="mt-6 border-l-2 border-[#9DB9A0] pl-5">
-                  <p className="max-w-md text-[12px] leading-6 text-[#71817A] sm:text-[13px]">
-                    A whole-person approach that considers lifestyle, nutrition,
-                    movement, breath and mind alongside your individual health
-                    needs.
-                  </p>
-                </div>
+                <Link
+                  href="/book-appointment"
+                  className="mt-8 inline-flex items-center gap-2 rounded-full bg-[#173F35] px-6 py-3 text-sm font-semibold text-white transition hover:-translate-y-0.5 hover:bg-[#0D332C]"
+                >
+                  Book an Appointment →
+                </Link>
               </div>
 
-              {/* Visual */}
-
-              <div className="relative mx-auto w-full max-w-[500px] lg:ml-auto">
-                <div
-                  aria-hidden="true"
-                  className="absolute -right-8 -top-8 h-40 w-40 rounded-full border border-[#789A7D]/20 sm:-right-12 sm:-top-12 sm:h-52 sm:w-52"
-                />
-
-                <div
-                  aria-hidden="true"
-                  className="absolute -bottom-8 -left-8 h-28 w-28 rounded-full border border-dashed border-[#789A7D]/20 sm:-bottom-10 sm:-left-10 sm:h-36 sm:w-36"
-                />
-
-                <div className="relative overflow-hidden rounded-[30px] bg-[#EAF0E7] shadow-[0_20px_50px_rgba(23,63,53,0.08)]">
-                  <div className="relative aspect-[4/4.5]">
-                    <Image
-                      src={`/images/conditions/${condition.slug}.png`}
-                      alt={`${condition.title} - Sutra Health`}
-                      fill
-                      priority
-                      sizes="(max-width: 1024px) 90vw, 500px"
-                      className="object-cover"
-                    />
-
-                    <div className="absolute inset-0 bg-gradient-to-t from-[#173F35]/30 via-transparent to-transparent" />
-                  </div>
-                </div>
-
-                <div className="absolute -bottom-5 left-5 rounded-2xl border border-[#173F35]/10 bg-white/95 px-5 py-4 shadow-[0_16px_40px_rgba(23,63,53,0.12)] backdrop-blur-sm sm:left-8">
-                  <p className="font-serif text-[23px] text-[#173F35]">
-                    Whole-person
-                  </p>
-                  <p className="mt-1 text-[10px] text-[#71817A] sm:text-[11px]">
-                    Lifestyle-focused care
-                  </p>
+              <div className="relative overflow-hidden rounded-[24px]">
+                <div className="relative aspect-[4/3] bg-[#EAF0E7]">
+                  <Image
+                    src={`/images/conditions/${condition.slug}.png`}
+                    alt={`${condition.title} - Sutra Health`}
+                    fill
+                    priority
+                    sizes="(max-width: 1024px) 100vw, 50vw"
+                    className="object-cover"
+                  />
                 </div>
               </div>
             </div>
@@ -303,39 +254,46 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
         <section className="bg-white">
           <Container>
             <div className="grid gap-10 lg:grid-cols-[210px_minmax(0,1fr)] lg:gap-16 xl:grid-cols-[230px_minmax(0,1fr)] xl:gap-20">
+
               {/* =================================================
                   DESKTOP CONTENTS
               ================================================== */}
               <aside className="hidden lg:block">
                 <div className="sticky top-24 py-10 lg:py-12">
-                  <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F]">
+                  <p className="text-[10px] font-bold uppercase tracking-[0.2em] text-[#65966F]">
                     Contents
                   </p>
 
-                  <nav
-                    aria-label="Condition page sections"
-                    className="mt-4 border-l border-[#173F35]/10"
-                  >
+                  <nav aria-label="Condition page sections" className="mt-4">
                     <a
                       href="#understanding"
-                      className="block border-l-2 border-[#65966F] -ml-px px-4 py-1.5 text-[12px] font-medium leading-5 text-[#173F35]"
+                      className="group block border-b border-[#173F35]/10 py-3 transition-colors hover:border-[#65966F]/40"
                     >
-                      Understanding
+                      <span className="block text-[12px]  leading-5 text-[#173F35]">
+                        Understanding
+                      </span>
+                   
                     </a>
 
                     <a
                       href="#concerns"
-                      className="block border-b border-transparent px-4 py-1.5 text-[12px] leading-5 text-[#71817A] transition-colors hover:border-[#173F35]/10 hover:text-[#173F35]"
+                      className="group block border-b border-[#173F35]/10 py-3 transition-colors hover:border-[#65966F]/40"
                     >
-                      Common concerns
+                      <span className="block text-[12px] leading-5 text-[#173F35]">
+                        Common concerns
+                      </span>
+                     
                     </a>
 
-                    {condition.lifestyleFactors?.length > 0 && (
+                    {condition.lifestyleFactors.length > 0 && (
                       <a
                         href="#lifestyle-factors"
-                        className="block border-b border-transparent px-4 py-1.5 text-[12px] leading-5 text-[#71817A] transition-colors hover:border-[#173F35]/10 hover:text-[#173F35]"
+                        className="group block border-b border-[#173F35]/10 py-3 transition-colors hover:border-[#65966F]/40"
                       >
-                        Lifestyle factors
+                        <span className="block text-[12px] leading-5 text-[#173F35]">
+                          Lifestyle factors
+                        </span>
+                       
                       </a>
                     )}
 
@@ -343,34 +301,46 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
                       <a
                         key={section.title}
                         href={`#section-${index}-${slugify(section.title)}`}
-                        className="block border-b border-transparent px-4 py-1.5 text-[12px] leading-5 text-[#71817A] transition-colors hover:border-[#173F35]/10 hover:text-[#173F35]"
+                        className="group block border-b border-[#173F35]/10 py-3 transition-colors hover:border-[#65966F]/40"
                       >
-                        {section.title}
+                        <span className="block text-[12px] leading-5 text-[#173F35]">
+                          {section.title}
+                        </span>
+                      
                       </a>
                     ))}
 
                     <a
                       href="#approach"
-                      className="block border-b border-transparent px-4 py-1.5 text-[12px] leading-5 text-[#71817A] transition-colors hover:border-[#173F35]/10 hover:text-[#173F35]"
+                      className="group block border-b border-[#173F35]/10 py-3 transition-colors hover:border-[#65966F]/40"
                     >
-                      Our approach
+                      <span className="block text-[12px] leading-5 text-[#173F35]">
+                        Our approach
+                      </span>
+                      
                     </a>
 
                     {condition.support?.length > 0 && (
                       <a
                         href="#support"
-                        className="block border-b border-transparent px-4 py-1.5 text-[12px] leading-5 text-[#71817A] transition-colors hover:border-[#173F35]/10 hover:text-[#173F35]"
+                        className="group block border-b border-[#173F35]/10 py-3 transition-colors hover:border-[#65966F]/40"
                       >
-                        How Sutra can help
+                        <span className="block text-[12px] leading-5 text-[#173F35]">
+                          How Sutra can help
+                        </span>
+                       
                       </a>
                     )}
 
                     {condition.faqs?.length > 0 && (
                       <a
                         href="#faq"
-                        className="block border-b border-transparent px-4 py-1.5 text-[12px] leading-5 text-[#71817A] transition-colors hover:border-[#173F35]/10 hover:text-[#173F35]"
+                        className="group block border-b border-[#173F35]/10 py-3 transition-colors hover:border-[#65966F]/40"
                       >
-                        FAQs
+                        <span className="block text-[12px] leading-5 text-[#173F35]">
+                          FAQs
+                        </span>
+                       
                       </a>
                     )}
                   </nav>
@@ -381,6 +351,7 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
                   ARTICLE CONTENT
               ================================================== */}
               <article className="min-w-0">
+
                 {/* Mobile contents */}
                 <div className="border-b border-[#173F35]/10 py-4 lg:hidden">
                   <details>
@@ -390,23 +361,14 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
                     </summary>
 
                     <nav className="mt-3 grid gap-0.5 border-l border-[#173F35]/10 pl-4">
-                      <a
-                        href="#understanding"
-                        className="py-1 text-[13px] text-[#71817A]"
-                      >
+                      <a href="#understanding" className="py-1 text-[13px] text-[#71817A]">
                         Understanding
                       </a>
-                      <a
-                        href="#concerns"
-                        className="py-1 text-[13px] text-[#71817A]"
-                      >
+                      <a href="#concerns" className="py-1 text-[13px] text-[#71817A]">
                         Common concerns
                       </a>
-                      {condition.lifestyleFactors?.length > 0 && (
-                        <a
-                          href="#lifestyle-factors"
-                          className="py-1 text-[13px] text-[#71817A]"
-                        >
+                      {condition.lifestyleFactors.length > 0 && (
+                        <a href="#lifestyle-factors" className="py-1 text-[13px] text-[#71817A]">
                           Lifestyle factors
                         </a>
                       )}
@@ -419,25 +381,16 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
                           {section.title}
                         </a>
                       ))}
-                      <a
-                        href="#approach"
-                        className="py-1 text-[13px] text-[#71817A]"
-                      >
+                      <a href="#approach" className="py-1 text-[13px] text-[#71817A]">
                         Our approach
                       </a>
                       {condition.support?.length > 0 && (
-                        <a
-                          href="#support"
-                          className="py-1 text-[13px] text-[#71817A]"
-                        >
+                        <a href="#support" className="py-1 text-[13px] text-[#71817A]">
                           How Sutra can help
                         </a>
                       )}
                       {condition.faqs?.length > 0 && (
-                        <a
-                          href="#faq"
-                          className="py-1 text-[13px] text-[#71817A]"
-                        >
+                        <a href="#faq" className="py-1 text-[13px] text-[#71817A]">
                           FAQs
                         </a>
                       )}
@@ -446,21 +399,16 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
                 </div>
 
                 {/* Introduction */}
-                <section
-                  id="understanding"
-                  className="scroll-mt-28 py-10 sm:py-12 lg:py-14"
-                >
-                  <div className="grid items-start gap-6 lg:grid-cols-[0.7fr_1.3fr] lg:gap-12 xl:grid-cols-[230px_minmax(0,1fr)] xl:gap-16">
-                    <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
-                        Understanding
-                      </p>
-                      <h2 className="mt-3 font-serif text-3xl leading-tight tracking-[-0.03em] text-[#173F35] sm:text-4xl">
-                        A whole-person perspective
-                      </h2>
-                    </div>
-                    <div>
-                      <p className="text-[17px] leading-8 text-[#536A62] sm:text-[18px] sm:leading-9">
+                <section id="understanding" className="scroll-mt-28 border-t border-[#173F35]/10 py-7 sm:py-8 lg:py-9">
+                  <div className="max-w-4xl">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
+                      Understanding
+                    </p>
+                    <h2 className="mt-1.5 max-w-3xl font-serif text-3xl leading-[1.05] tracking-[-0.03em] text-[#173F35] sm:text-4xl">
+                      A whole-person perspective
+                    </h2>
+                    <div className="mt-4 max-w-3xl">
+                      <p className="text-[17px] leading-8 text-[#536A62] sm:text-[18px] sm:leading-8">
                         {condition.introduction}
                       </p>
                     </div>
@@ -468,27 +416,20 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
                 </section>
 
                 {/* Common concerns */}
-                <section
-                  id="concerns"
-                  className="scroll-mt-28 border-t border-[#173F35]/10 py-10 sm:py-12 lg:py-14"
-                >
-                  <div className="grid items-start gap-6 lg:grid-cols-[0.7fr_1.3fr] lg:gap-12 xl:grid-cols-[230px_minmax(0,1fr)] xl:gap-16">
-                    <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
-                        Common concerns
-                      </p>
-                      <h2 className="mt-3 font-serif text-3xl leading-tight tracking-[-0.03em] text-[#173F35] sm:text-4xl">
-                        What brings people to us
-                      </h2>
-                    </div>
-
-                    <div className="divide-y divide-[#173F35]/10 border-y border-[#173F35]/10">
+                <section id="concerns" className="scroll-mt-28 border-t border-[#173F35]/10 py-7 sm:py-8 lg:py-9">
+                  <div className="max-w-4xl">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
+                      Common concerns
+                    </p>
+                    <h2 className="mt-1.5 max-w-3xl font-serif text-3xl leading-[1.05] tracking-[-0.03em] text-[#173F35] sm:text-4xl">
+                      What brings people to us
+                    </h2>
+                    <div className="mt-4 border-y border-[#173F35]/10">
                       {condition.concerns.map((concern) => (
-                        <div
-                          key={concern}
-                          className="py-4 text-[16px] leading-7 text-[#536A62] sm:text-[17px]"
-                        >
-                          {concern}
+                        <div key={concern} className="border-b border-[#173F35]/10 py-3 last:border-b-0">
+                          <p className="text-[16px] leading-7 text-[#536A62] sm:text-[17px]">
+                            {concern}
+                          </p>
                         </div>
                       ))}
                     </div>
@@ -496,28 +437,22 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
                 </section>
 
                 {/* Lifestyle factors */}
-                {condition.lifestyleFactors?.length > 0 && (
-                  <section
-                    id="lifestyle-factors"
-                    className="scroll-mt-28 border-t border-[#173F35]/10 py-10 sm:py-12 lg:py-14"
-                  >
-                    <div className="grid items-start gap-6 lg:grid-cols-[0.7fr_1.3fr] lg:gap-12 xl:grid-cols-[230px_minmax(0,1fr)] xl:gap-16">
-                      <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
-                          Lifestyle factors
-                        </p>
-                        <h2 className="mt-3 font-serif text-3xl leading-tight tracking-[-0.03em] text-[#173F35] sm:text-4xl">
-                          Everyday factors can matter
-                        </h2>
-                      </div>
-
-                      <div className="divide-y divide-[#173F35]/10 border-y border-[#173F35]/10">
+                {condition.lifestyleFactors.length > 0 && (
+                  <section id="lifestyle-factors" className="scroll-mt-28 border-t border-[#173F35]/10 py-7 sm:py-8 lg:py-9">
+                    <div className="max-w-4xl">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
+                        Lifestyle factors
+                      </p>
+                      <h2 className="mt-1.5 max-w-3xl font-serif text-3xl leading-[1.05] tracking-[-0.03em] text-[#173F35] sm:text-4xl">
+                        Everyday factors can matter
+                      </h2>
+                      <div className="mt-4 border-y border-[#173F35]/10">
                         {condition.lifestyleFactors.map((factor) => (
-                          <div key={factor.title} className="py-6">
-                            <h3 className="font-serif text-[22px] leading-tight text-[#173F35] sm:text-[24px]">
+                          <div key={factor.title} className="border-b border-[#173F35]/10 py-4 last:border-b-0">
+                            <h3 className="font-serif text-[21px] leading-tight text-[#173F35] sm:text-[23px]">
                               {factor.title}
                             </h3>
-                            <p className="mt-3 text-[16px] leading-7 text-[#687A73] sm:text-[17px] sm:leading-8">
+                            <p className="mt-2 max-w-3xl text-[16px] leading-7 text-[#687A73] sm:text-[17px] sm:leading-8">
                               {factor.description}
                             </p>
                           </div>
@@ -527,54 +462,44 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
                   </section>
                 )}
 
-              {/* Main article sections */}
-<div>
-  {condition.sections.map((section, index) => (
-    <section
-      key={section.title}
-      id={`section-${index}-${slugify(section.title)}`}
-      className="scroll-mt-24 border-t border-[#173F35]/10 py-8 sm:py-9 lg:py-10"
-    >
-      <div className="max-w-4xl">
-
-        {/* TITLE ROW */}
-        <div>
-          <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#9AAA9F]">
-            {String(index + 1).padStart(2, "0")}
-          </p>
-
-          <h2 className="mt-1.5 font-serif text-2xl leading-[1.08] tracking-[-0.025em] text-[#173F35] sm:text-3xl">
-            {section.title}
-          </h2>
-        </div>
-
-        {/* PARAGRAPH ROW */}
-        <div className="mt-4 max-w-3xl space-y-3">
-          {section.content.map((paragraph) => (
-            <p
-              key={paragraph}
-              className="text-[17px] leading-8 text-[#536A62] sm:text-[18px] sm:leading-8"
-            >
-              {paragraph}
-            </p>
-          ))}
-        </div>
-
-      </div>
-    </section>
-  ))}
-</div>
+                {/* Main article sections */}
+                <div>
+                  {condition.sections.map((section, index) => (
+                    <section
+                      key={section.title}
+                      id={`section-${index}-${slugify(section.title)}`}
+                      className="scroll-mt-28 border-t border-[#173F35]/10 py-7 sm:py-8 lg:py-9"
+                    >
+                      <div className="max-w-4xl">
+                        <p className="text-[10px] font-semibold uppercase tracking-[0.18em] text-[#9AAA9F]">
+                          {String(index + 1).padStart(2, "0")}
+                        </p>
+                        <h2 className="mt-1.5 max-w-3xl font-serif text-2xl leading-[1.08] tracking-[-0.025em] text-[#173F35] sm:text-3xl">
+                          {section.title}
+                        </h2>
+                        <div className="mt-4 max-w-3xl space-y-3">
+                          {section.content.map((paragraph) => (
+                            <p
+                              key={paragraph}
+                              className="text-[17px] leading-8 text-[#536A62] sm:text-[18px] sm:leading-8"
+                            >
+                              {paragraph}
+                            </p>
+                          ))}
+                        </div>
+                      </div>
+                    </section>
+                  ))}
+                </div>
 
                 {/* Contextual internal links */}
                 {internalLinks.length > 0 && (
-                  <section className="border-t border-[#173F35]/10 py-8 sm:py-10">
-                    <div className="grid gap-6 sm:grid-cols-[0.65fr_1.35fr] sm:gap-16">
-                      <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F]">
-                          Explore further
-                        </p>
-                      </div>
-                      <div className="flex flex-wrap gap-x-6 gap-y-3">
+                  <section className="border-t border-[#173F35]/10 py-7 sm:py-8">
+                    <div className="max-w-4xl">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F]">
+                        Explore further
+                      </p>
+                      <div className="mt-3 flex flex-wrap gap-x-6 gap-y-2">
                         {internalLinks.map((link) => (
                           <Link
                             key={`${link.href}-${link.label}`}
@@ -582,10 +507,7 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
                             className="group inline-flex items-center gap-2 border-b border-[#65966F]/40 pb-1 text-[14px] font-semibold text-[#173F35] transition-colors hover:border-[#173F35] hover:text-[#65966F]"
                           >
                             {link.label}
-                            <span
-                              aria-hidden="true"
-                              className="transition-transform group-hover:translate-x-1"
-                            >
+                            <span aria-hidden="true" className="transition-transform group-hover:translate-x-1">
                               →
                             </span>
                           </Link>
@@ -596,26 +518,17 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
                 )}
 
                 {/* Approach */}
-                <section
-                  id="approach"
-                  className="scroll-mt-28 border-t border-[#173F35]/10 py-10 sm:py-12 lg:py-14"
-                >
-                  <div className="grid items-start gap-6 lg:grid-cols-[0.7fr_1.3fr] lg:gap-12 xl:grid-cols-[230px_minmax(0,1fr)] xl:gap-16">
-                    <div>
-                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
-                        Our approach
-                      </p>
-                      <h2 className="mt-3 font-serif text-3xl leading-tight tracking-[-0.03em] text-[#173F35] sm:text-4xl">
-                        Building healthier everyday habits
-                      </h2>
-                    </div>
-
-                    <div className="divide-y divide-[#173F35]/10 border-y border-[#173F35]/10">
+                <section id="approach" className="scroll-mt-28 border-t border-[#173F35]/10 py-7 sm:py-8 lg:py-9">
+                  <div className="max-w-4xl">
+                    <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
+                      Our approach
+                    </p>
+                    <h2 className="mt-1.5 max-w-3xl font-serif text-3xl leading-[1.05] tracking-[-0.03em] text-[#173F35] sm:text-4xl">
+                      Building healthier everyday habits
+                    </h2>
+                    <div className="mt-4 border-y border-[#173F35]/10">
                       {condition.approach.map((item) => (
-                        <div
-                          key={item}
-                          className="py-4 text-[17px] leading-8 text-[#536A62] sm:text-[18px]"
-                        >
+                        <div key={item} className="border-b border-[#173F35]/10 py-3 last:border-b-0 text-[17px] leading-8 text-[#536A62] sm:text-[18px] sm:leading-8">
                           {item}
                         </div>
                       ))}
@@ -625,26 +538,17 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
 
                 {/* Support */}
                 {condition.support?.length > 0 && (
-                  <section
-                    id="support"
-                    className="scroll-mt-28 border-t border-[#173F35]/10 py-10 sm:py-12 lg:py-14"
-                  >
-                    <div className="grid items-start gap-6 lg:grid-cols-[0.7fr_1.3fr] lg:gap-12 xl:grid-cols-[230px_minmax(0,1fr)] xl:gap-16">
-                      <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
-                          How Sutra Health can help
-                        </p>
-                        <h2 className="mt-3 font-serif text-3xl leading-tight tracking-[-0.03em] text-[#173F35] sm:text-4xl">
-                          Support shaped around you
-                        </h2>
-                      </div>
-
-                      <div className="divide-y divide-[#173F35]/10 border-y border-[#173F35]/10">
+                  <section id="support" className="scroll-mt-28 border-t border-[#173F35]/10 py-7 sm:py-8 lg:py-9">
+                    <div className="max-w-4xl">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
+                        How Sutra Health can help
+                      </p>
+                      <h2 className="mt-1.5 max-w-3xl font-serif text-3xl leading-[1.05] tracking-[-0.03em] text-[#173F35] sm:text-4xl">
+                        Support shaped around you
+                      </h2>
+                      <div className="mt-4 border-y border-[#173F35]/10">
                         {condition.support.map((item) => (
-                          <div
-                            key={item}
-                            className="py-4 text-[17px] leading-8 text-[#536A62] sm:text-[18px]"
-                          >
+                          <div key={item} className="border-b border-[#173F35]/10 py-3 last:border-b-0 text-[17px] leading-8 text-[#536A62] sm:text-[18px] sm:leading-8">
                             {item}
                           </div>
                         ))}
@@ -655,42 +559,30 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
 
                 {/* FAQ */}
                 {condition.faqs?.length > 0 && (
-                  <section
-                    id="faq"
-                    className="scroll-mt-28 border-t border-[#173F35]/10 py-10 sm:py-12 lg:py-14"
-                  >
-                    <div className="grid gap-10 lg:grid-cols-[0.65fr_1.35fr] lg:gap-16 xl:gap-20">
-                      <div>
-                        <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
-                          Frequently asked questions
-                        </p>
-                        <h2 className="mt-3 font-serif text-3xl leading-tight tracking-[-0.03em] text-[#173F35] sm:text-4xl">
-                          Questions about {condition.title.toLowerCase()}?
-                        </h2>
-                      </div>
-
-                      <div className="border-t border-[#173F35]/15">
+                  <section id="faq" className="scroll-mt-28 border-t border-[#173F35]/10 py-7 sm:py-8 lg:py-9">
+                    <div className="max-w-4xl">
+                      <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
+                        Frequently asked questions
+                      </p>
+                      <h2 className="mt-1.5 max-w-3xl font-serif text-3xl leading-[1.05] tracking-[-0.03em] text-[#173F35] sm:text-4xl">
+                        Questions about {condition.title.toLowerCase()}?
+                      </h2>
+                      <div className="mt-4 border-t border-[#173F35]/15">
                         {condition.faqs.map((faq, index) => (
-                          <details
-                            key={faq.question}
-                            className="group border-b border-[#173F35]/15"
-                          >
-                            <summary className="flex cursor-pointer list-none items-center gap-4 py-5 sm:py-6 [&::-webkit-details-marker]:hidden">
+                          <details key={faq.question} className="group border-b border-[#173F35]/15">
+                            <summary className="flex cursor-pointer list-none items-center gap-4 py-4 sm:py-5 [&::-webkit-details-marker]:hidden">
                               <span className="w-7 shrink-0 text-[10px] font-semibold tracking-[0.12em] text-[#A2ADA7]">
                                 {String(index + 1).padStart(2, "0")}
                               </span>
                               <span className="flex-1 text-[15px] font-medium leading-6 text-[#173F35] sm:text-[16px]">
                                 {faq.question}
                               </span>
-                              <span
-                                aria-hidden="true"
-                                className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#173F35]/10 text-[#65966F] transition-transform duration-300 group-open:rotate-45"
-                              >
+                              <span aria-hidden="true" className="flex h-8 w-8 shrink-0 items-center justify-center rounded-full border border-[#173F35]/10 text-[#65966F] transition-transform duration-300 group-open:rotate-45">
                                 +
                               </span>
                             </summary>
-                            <div className="pb-6 pl-11 pr-8 sm:pb-7">
-                              <p className="max-w-2xl text-[16px] leading-8 text-[#687A73] sm:text-[17px] sm:leading-8">
+                            <div className="pb-5 pl-11 pr-8">
+                              <p className="max-w-3xl text-[16px] leading-7 text-[#687A73] sm:text-[17px] sm:leading-8">
                                 {faq.answer}
                               </p>
                             </div>
@@ -720,10 +612,7 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
                     Related health conditions
                   </h2>
                 </div>
-                <Link
-                  href="/conditions"
-                  className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#173F35] transition-colors hover:text-[#65966F]"
-                >
+                <Link href="/conditions" className="inline-flex items-center gap-2 text-[13px] font-semibold text-[#173F35] transition-colors hover:text-[#65966F]">
                   View all conditions
                   <span aria-hidden="true">→</span>
                 </Link>
@@ -755,10 +644,7 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
                         <p className="mt-2 pr-8 text-[12px] leading-5 text-[#71817A]">
                           {related.shortDescription}
                         </p>
-                        <span
-                          aria-hidden="true"
-                          className="absolute bottom-6 right-6 flex h-8 w-8 items-center justify-center rounded-full border border-[#173F35]/10 text-[#65966F] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-[#173F35] group-hover:text-white"
-                        >
+                        <span aria-hidden="true" className="absolute bottom-6 right-6 flex h-8 w-8 items-center justify-center rounded-full border border-[#173F35]/10 text-[#65966F] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-[#173F35] group-hover:text-white">
                           →
                         </span>
                       </div>
@@ -770,13 +656,16 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
           </section>
         )}
 
+
         {/* ===================================================
             CTA
         =================================================== */}
 
         <section className="bg-[#173F35] py-10 sm:py-12 lg:py-14">
           <Container>
+
             <div className="mx-auto max-w-3xl text-center">
+
               <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#B5CEB6] sm:text-[11px]">
                 Take the next step
               </p>
@@ -786,8 +675,8 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
               </h2>
 
               <p className="mx-auto mt-5 max-w-xl text-sm leading-7 text-[#CBDAD1]">
-                Book a consultation to discuss your health goals and explore an
-                approach that fits your needs and everyday life.
+                Book a consultation to discuss your health goals and explore
+                an approach that fits your needs and everyday life.
               </p>
 
               <Link
@@ -797,9 +686,12 @@ export default async function ConditionPage({ params }: ConditionPageProps) {
                 Book an Appointment
                 <span aria-hidden="true">→</span>
               </Link>
+
             </div>
+
           </Container>
         </section>
+
       </main>
     </>
   );

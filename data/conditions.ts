@@ -18,7 +18,7 @@ export interface Condition {
 
   sections: ConditionSection[];
 
-  lifestyleFactors?: {
+  lifestyleFactors: {
     title: string;
     description: string;
   }[];
@@ -33,6 +33,11 @@ export interface Condition {
   }[];
 
   relatedConditions: string[];
+
+  internalLinks: {
+    label: string;
+    href: string;
+  }[];
 }
 
 export const conditions: Condition[] = [
@@ -54,6 +59,25 @@ export const conditions: Condition[] = [
       "Questions about nutrition and eating patterns",
       "Difficulty becoming physically active",
       "Lifestyle factors affecting weight and wellbeing",
+    ],
+
+    lifestyleFactors: [
+      {
+        title: "Nutrition and eating patterns",
+        description: "Eating patterns and nutrition guidance can be considered as part of a sustainable weight-management plan.",
+      },
+      {
+        title: "Movement and physical activity",
+        description: "Regular, appropriate movement can be built around individual abilities, preferences and routine.",
+      },
+      {
+        title: "Sleep and recovery",
+        description: "Sleep routines and recovery can be considered alongside nutrition and activity.",
+      },
+      {
+        title: "Stress and daily routines",
+        description: "Stress, routines and other everyday habits may be relevant to sustainable lifestyle change.",
+      },
     ],
 
     sections: [
@@ -176,6 +200,12 @@ export const conditions: Condition[] = [
       "high-blood-pressure",
       "digestive-gut-health",
     ],
+
+    internalLinks: [
+      { label: "Nutrition", href: "/nutrition" },
+      { label: "Lifestyle Medicine", href: "/lifestyle-medicine" },
+      { label: "Yoga Therapy", href: "/yoga-therapy" },
+    ],
   },
 
   {
@@ -196,6 +226,25 @@ export const conditions: Condition[] = [
       "Weight management challenges",
       "Questions about nutrition and physical activity",
       "Concerns about long-term lifestyle habits",
+    ],
+
+    lifestyleFactors: [
+      {
+        title: "Nutrition",
+        description: "Eating patterns can be reviewed as part of a broader metabolic-health lifestyle plan.",
+      },
+      {
+        title: "Physical activity",
+        description: "Appropriate physical activity can support a healthy lifestyle and can be adapted to individual circumstances.",
+      },
+      {
+        title: "Weight-related habits",
+        description: "Weight-related goals can be considered together with nutrition, movement, sleep and stress.",
+      },
+      {
+        title: "Sleep and stress",
+        description: "Sleep routines and stress management can be considered as part of overall lifestyle support.",
+      },
     ],
 
     sections: [
@@ -316,6 +365,13 @@ export const conditions: Condition[] = [
       "high-blood-pressure",
       "digestive-gut-health",
     ],
+
+    internalLinks: [
+      { label: "Weight Management", href: "/conditions/weight-management" },
+      { label: "Nutrition", href: "/nutrition" },
+      { label: "Lifestyle Medicine", href: "/lifestyle-medicine" },
+      { label: "Yoga Therapy", href: "/yoga-therapy" },
+    ],
   },
 
   {
@@ -336,6 +392,25 @@ export const conditions: Condition[] = [
       "Questions about nutrition and activity",
       "Stress and sleep concerns",
       "Interest in healthier daily habits",
+    ],
+
+    lifestyleFactors: [
+      {
+        title: "Nutrition",
+        description: "Nutrition and eating patterns can be reviewed as part of lifestyle support alongside appropriate medical care.",
+      },
+      {
+        title: "Physical activity",
+        description: "Appropriate movement can be incorporated according to individual health and circumstances.",
+      },
+      {
+        title: "Stress management",
+        description: "Relaxation, breathing and mindfulness may be considered where appropriate.",
+      },
+      {
+        title: "Sleep and daily routines",
+        description: "Consistent sleep and healthy daily routines can be reviewed as part of broader lifestyle support.",
+      },
     ],
 
     sections: [
@@ -456,6 +531,13 @@ export const conditions: Condition[] = [
       "weight-management",
       "arthritis-joint-pain",
     ],
+
+    internalLinks: [
+      { label: "Lifestyle Medicine", href: "/lifestyle-medicine" },
+      { label: "Nutrition", href: "/nutrition" },
+      { label: "Yoga Therapy", href: "/yoga-therapy" },
+      { label: "Metabolic Health", href: "/conditions/metabolic-health" },
+    ],
   },
 
   {
@@ -476,6 +558,25 @@ export const conditions: Condition[] = [
       "Stiffness affecting everyday activities",
       "Challenges maintaining an active routine",
       "Lifestyle concerns related to joint wellbeing",
+    ],
+
+    lifestyleFactors: [
+      {
+        title: "Movement and mobility",
+        description: "Appropriate movement can be adapted to individual abilities, symptoms and healthcare guidance.",
+      },
+      {
+        title: "Therapeutic yoga",
+        description: "Therapeutic yoga may be adapted around movement limitations and individual goals when appropriate.",
+      },
+      {
+        title: "Weight and lifestyle habits",
+        description: "Nutrition and weight-related goals may be considered when relevant to overall wellbeing.",
+      },
+      {
+        title: "Relaxation and mind",
+        description: "Breathing, relaxation and mindfulness may be used as supportive lifestyle practices where appropriate.",
+      },
     ],
 
     sections: [
@@ -595,6 +696,13 @@ export const conditions: Condition[] = [
       "metabolic-health",
       "migraine-headache",
     ],
+
+    internalLinks: [
+      { label: "Yoga Therapy", href: "/yoga-therapy" },
+      { label: "Lifestyle Medicine", href: "/lifestyle-medicine" },
+      { label: "Nutrition", href: "/nutrition" },
+      { label: "Weight Management", href: "/conditions/weight-management" },
+    ],
   },
 
   {
@@ -615,6 +723,25 @@ export const conditions: Condition[] = [
       "Stress-related challenges",
       "Lifestyle-related triggers",
       "Difficulty maintaining consistent daily routines",
+    ],
+
+    lifestyleFactors: [
+      {
+        title: "Sleep and routines",
+        description: "Regular sleep and consistent daily routines may be relevant for some people with recurring headaches.",
+      },
+      {
+        title: "Stress and relaxation",
+        description: "Stress-management, breathing and relaxation practices may be considered as supportive strategies.",
+      },
+      {
+        title: "Nutrition and hydration",
+        description: "Eating patterns and hydration can be reviewed as part of an individualized lifestyle assessment.",
+      },
+      {
+        title: "Movement and yoga",
+        description: "Appropriately selected movement or yoga may be included according to individual health and symptoms.",
+      },
     ],
 
     sections: [
@@ -733,6 +860,13 @@ export const conditions: Condition[] = [
       "womens-health",
       "high-blood-pressure",
     ],
+
+    internalLinks: [
+      { label: "Yoga Therapy", href: "/yoga-therapy" },
+      { label: "Lifestyle Medicine", href: "/lifestyle-medicine" },
+      { label: "Nutrition", href: "/nutrition" },
+      { label: "Digestive & Gut Health", href: "/conditions/digestive-gut-health" },
+    ],
   },
 
   {
@@ -753,6 +887,25 @@ export const conditions: Condition[] = [
       "Stress and digestive wellbeing",
       "Low physical activity",
       "Questions about healthy eating habits",
+    ],
+
+    lifestyleFactors: [
+      {
+        title: "Eating patterns and nutrition",
+        description: "Eating patterns, food preferences and nutrition routines can be reviewed as part of individualized support.",
+      },
+      {
+        title: "Daily routines",
+        description: "Meal timing, activity and other everyday routines can be considered when developing a lifestyle plan.",
+      },
+      {
+        title: "Movement",
+        description: "Appropriate regular movement can be part of a healthy lifestyle.",
+      },
+      {
+        title: "Stress and mindfulness",
+        description: "Stress management, breathing, relaxation and mindfulness may be considered as supportive practices.",
+      },
     ],
 
     sections: [
@@ -871,6 +1024,13 @@ export const conditions: Condition[] = [
       "metabolic-health",
       "womens-health",
     ],
+
+    internalLinks: [
+      { label: "Nutrition", href: "/nutrition" },
+      { label: "Lifestyle Medicine", href: "/lifestyle-medicine" },
+      { label: "Yoga Therapy", href: "/yoga-therapy" },
+      { label: "Metabolic Health", href: "/conditions/metabolic-health" },
+    ],
   },
 
   {
@@ -891,6 +1051,25 @@ export const conditions: Condition[] = [
       "Sleep and recovery concerns",
       "Maintaining healthy daily routines",
       "Lifestyle-related health concerns",
+    ],
+
+    lifestyleFactors: [
+      {
+        title: "Nutrition",
+        description: "Personalized nutrition guidance can be shaped around individual needs, preferences, routines and health goals.",
+      },
+      {
+        title: "Movement and therapeutic yoga",
+        description: "Appropriate movement and adapted therapeutic yoga may support strength, mobility and general wellbeing.",
+      },
+      {
+        title: "Sleep and recovery",
+        description: "Sleep routines and recovery can be considered as part of broader lifestyle support.",
+      },
+      {
+        title: "Stress, breath and mind",
+        description: "Stress management, breathing, relaxation and mindfulness may be included where appropriate.",
+      },
     ],
 
     sections: [
@@ -1009,6 +1188,13 @@ export const conditions: Condition[] = [
       "migraine-headache",
       "digestive-gut-health",
       "weight-management",
+    ],
+
+    internalLinks: [
+      { label: "Nutrition", href: "/nutrition" },
+      { label: "Yoga Therapy", href: "/yoga-therapy" },
+      { label: "Lifestyle Medicine", href: "/lifestyle-medicine" },
+      { label: "Weight Management", href: "/conditions/weight-management" },
     ],
   },
 ];
