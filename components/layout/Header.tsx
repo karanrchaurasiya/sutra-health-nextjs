@@ -622,6 +622,14 @@ export default function Header() {
           </Link>
 
           <Link
+            href="/contact"
+            className="mobileNavLink"
+            onClick={closeNavigation}
+          >
+            Contact
+          </Link>
+
+          <Link
             href="/book-appointment"
             className="mobileBookButton"
             onClick={closeNavigation}
