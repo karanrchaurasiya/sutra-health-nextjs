@@ -102,13 +102,35 @@ export default function SutraHealthMethod() {
 
         {/* Six-stage method */}
         <div className="mt-12 border-y border-[#173F35]/15 sm:mt-14">
-          <div className="grid md:grid-cols-2 lg:grid-cols-3">
+          <div
+            className="
+              flex
+              snap-x
+              snap-mandatory
+              gap-4
+              overflow-x-auto
+              py-1
+              pb-5
+              scrollbar-hide
+
+              md:grid
+              md:grid-cols-2
+              md:gap-0
+              md:overflow-visible
+              md:pb-0
+
+              lg:grid-cols-3
+            "
+          >
             {steps.map((step, index) => (
               <article
                 key={step.number}
                 className={[
-                  "group relative p-6 sm:p-8",
-                  "border-b border-[#173F35]/15",
+                  "group relative w-[84vw] shrink-0 snap-start p-6",
+                  "border border-[#173F35]/10 bg-[#F8F5EE]",
+                  "sm:w-[70vw] sm:p-8",
+                  "md:w-auto md:shrink md:border-0 md:border-b md:border-[#173F35]/15",
+                  "lg:p-8",
                   index % 3 !== 2 ? "lg:border-r" : "",
                   index < 3 ? "lg:border-b" : "",
                   index % 2 === 0 ? "md:border-r" : "md:border-r-0",
@@ -141,6 +163,13 @@ export default function SutraHealthMethod() {
               </article>
             ))}
           </div>
+        </div>
+
+        {/* Mobile swipe hint */}
+        <div className="mt-3 flex items-center justify-center gap-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#789087] md:hidden">
+          <span aria-hidden="true">←</span>
+          <span>Swipe to explore the method</span>
+          <span aria-hidden="true">→</span>
         </div>
 
         {/* Philosophy + internal links */}
@@ -177,6 +206,7 @@ export default function SutraHealthMethod() {
                   className="group flex items-center justify-between py-3.5 text-[13px] font-medium text-[#365B50] transition-colors hover:text-[#173F35] sm:py-4 sm:text-[14px]"
                 >
                   <span>{approach.title}</span>
+
                   <span
                     aria-hidden="true"
                     className="text-[#65966F] transition-transform duration-200 group-hover:translate-x-1"

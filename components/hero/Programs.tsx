@@ -145,11 +145,7 @@ export default function Programs() {
         </div>
 
         {/* Mobile Swipe Hint */}
-        <div className="mt-3 flex items-center justify-center gap-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#789087] sm:hidden">
-          <span aria-hidden="true">←</span>
-          <span>Swipe to explore</span>
-          <span aria-hidden="true">→</span>
-        </div>
+     
 
         {/* Bottom Link */}
         <div className="mt-8 text-center">
