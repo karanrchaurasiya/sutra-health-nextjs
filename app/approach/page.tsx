@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import Container from "@/components/shared/Container";
+import FAQ from "@/components/shared/FAQ";
 
 export const metadata: Metadata = {
   title: "Our Approach | The Sutra Health Method",
@@ -107,9 +108,66 @@ const principles = [
   },
 ];
 
+
+  const pageSchema = {
+    "@context": "https://schema.org",
+    "@type": "MedicalWebPage",
+    name: "The Sutra Health Method | Sutra Health",
+    description:
+      "Learn how the Sutra Health Method brings lifestyle medicine, nutrition, therapeutic yoga, breath and mindfulness together through a personalised, practical and sustainable pathway.",
+    url: "https://lifequality.org.in/approach",
+    isPartOf: {
+      "@type": "WebSite",
+      name: "Sutra Health",
+      url: "https://lifequality.org.in/",
+    },
+    about: {
+      "@type": "MedicalSpecialty",
+      name: "Lifestyle Medicine",
+    },
+  };
+
+
+const approachFAQs = [
+  {
+    question: "What is the Sutra Health Method?",
+    answer:
+      "The Sutra Health Method is Sutra Health's whole-person pathway to sustainable health. It brings lifestyle medicine, nutrition, therapeutic yoga and movement, breath and mindfulness, behaviour change and health education into a practical process of understanding, personalisation, practice, sustainability and adaptation.",
+  },
+  {
+    question: "How does the Sutra Health approach work?",
+    answer:
+      "The approach follows six stages: Understand, Identify, Personalise, Practise, Sustain and Adapt. The aim is to understand the person's health and everyday context, identify relevant patterns, develop practical changes, practise them, sustain useful habits and adapt the approach as circumstances change.",
+  },
+  {
+    question: "Is the Sutra Health approach personalised?",
+    answer:
+      "Yes. Sutra Health describes its approach as individualised rather than based on one routine for everyone. Recommendations can take account of health concerns, goals, routines, preferences, abilities and practical circumstances.",
+  },
+  {
+    question: "What approaches are included in the Sutra Health Method?",
+    answer:
+      "The core approaches are lifestyle medicine, nutrition, therapeutic yoga and movement, and breath and mindfulness. These are considered within a wider framework that also includes behaviour change and health education.",
+  },
+  {
+    question: "What is the 21-Point Lifestyle Assessment?",
+    answer:
+      "The 21-Point Lifestyle Assessment is a structured way to review lifestyle factors and identify areas where practical changes may be useful. It is a lifestyle guidance tool and should not be treated as a substitute for clinical diagnosis.",
+  },
+  {
+    question: "Is the Sutra Health Method a replacement for medical treatment?",
+    answer:
+      "No. Lifestyle and complementary practices should not be presented as a replacement for appropriate medical diagnosis, medication or treatment. People with health concerns should receive appropriate care from qualified healthcare professionals.",
+  },
+];
+
 export default function ApproachPage() {
   return (
     <main className="bg-[#FAF8F1] text-[#173F35]">
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(pageSchema) }}
+      />
       {/* ==================================================
           HERO
       ================================================== */}
@@ -413,6 +471,10 @@ export default function ApproachPage() {
           </div>
         </Container>
       </section>
-    </main>
+
+
+      {/* FAQ */}
+      <FAQ faqs={approachFAQs} />
+</main>
   );
 }

@@ -618,33 +618,65 @@ export default async function ConditionPage({
                 </Link>
               </div>
 
-              <div className="mt-8 grid gap-5 md:grid-cols-2 lg:grid-cols-3">
+              <div
+                className="
+                  mt-8 flex gap-4 overflow-x-auto pb-3
+                  snap-x snap-mandatory
+                  [-ms-overflow-style:none] [scrollbar-width:none]
+                  [&::-webkit-scrollbar]:hidden
+                  md:grid md:grid-cols-2 lg:grid-cols-3
+                  md:overflow-visible md:pb-0
+                "
+              >
                 {relatedConditions.map((related) => {
                   if (!related) return null;
+
                   return (
                     <Link
                       key={related.slug}
                       href={`/conditions/${related.slug}`}
-                      className="group overflow-hidden rounded-[22px] border border-[#173F35]/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_18px_40px_rgba(23,63,53,0.09)]"
+                      className="
+                        group min-w-[82%] snap-start
+                        overflow-hidden rounded-[20px]
+                        border border-[#173F35]/10 bg-white
+                        transition-all duration-300
+                        hover:-translate-y-1
+                        hover:shadow-[0_18px_40px_rgba(23,63,53,0.09)]
+                        sm:min-w-[68%] md:min-w-0
+                      "
                     >
                       <div className="relative aspect-[16/10] overflow-hidden">
                         <Image
                           src={`/images/conditions/${related.slug}.png`}
                           alt={`${related.title} - Sutra Health`}
                           fill
-                          sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                          sizes="(max-width: 767px) 82vw, (max-width: 1024px) 50vw, 33vw"
                           className="object-cover transition-transform duration-700 group-hover:scale-105"
                         />
                         <div className="absolute inset-0 bg-gradient-to-t from-[#173F35]/25 via-transparent to-transparent" />
                       </div>
+
                       <div className="relative p-5 sm:p-6">
-                        <h3 className="pr-10 font-serif text-[23px] leading-tight tracking-[-0.02em] text-[#173F35]">
+                        <h3 className="pr-8 font-serif text-[22px] leading-tight tracking-[-0.02em] text-[#173F35]">
                           {related.title}
                         </h3>
-                        <p className="mt-2 pr-8 text-[12px] leading-5 text-[#71817A]">
+
+                        <p className="mt-2 pr-6 text-[12px] leading-5 text-[#71817A]">
                           {related.shortDescription}
                         </p>
-                        <span aria-hidden="true" className="absolute bottom-6 right-6 flex h-8 w-8 items-center justify-center rounded-full border border-[#173F35]/10 text-[#65966F] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-[#173F35] group-hover:text-white">
+
+                        <span
+                          aria-hidden="true"
+                          className="
+                            absolute bottom-5 right-5 flex h-8 w-8
+                            items-center justify-center rounded-full
+                            border border-[#173F35]/10 text-[#65966F]
+                            transition-all duration-300
+                            group-hover:translate-x-1
+                            group-hover:bg-[#173F35]
+                            group-hover:text-white
+                          "
+                        >
                           →
                         </span>
                       </div>
