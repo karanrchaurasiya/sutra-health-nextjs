@@ -27,9 +27,9 @@ export default function Footer() {
   return (
     <footer className="bg-[#123F35] text-white">
       <Container>
-        <div className="grid gap-12 py-14 sm:py-16 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-10 lg:py-20">
+        <div className="grid grid-cols-2 gap-x-6 gap-y-10 py-14 sm:gap-x-8 sm:gap-y-12 sm:py-16 lg:grid-cols-[1.5fr_1fr_1fr_1fr] lg:gap-10 lg:py-20">
           {/* Brand */}
-          <div className="max-w-[360px]">
+          <div className="col-span-2 max-w-[360px] lg:col-span-1">
             <Link
               href="/"
               className="inline-flex items-center gap-3"

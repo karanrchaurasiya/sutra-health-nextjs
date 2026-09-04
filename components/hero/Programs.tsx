@@ -37,10 +37,8 @@ export default function Programs() {
   return (
     <section className="bg-[#FAF8F1] py-20 sm:py-24 lg:py-28">
       <Container>
-
         {/* Heading */}
         <div className="mx-auto max-w-2xl text-center">
-
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6B9573]">
             Our programs
           </p>
@@ -54,35 +52,75 @@ export default function Programs() {
             practical changes in everyday life. Each program sits within
             the wider whole-person approach.
           </p>
-
         </div>
 
-        {/* Program cards */}
-        <div className="mt-12 grid gap-5 sm:grid-cols-2 lg:mt-14 lg:grid-cols-4">
+        {/* Program Cards */}
+        <div
+          className="
+            mt-12
+            flex
+            snap-x
+            snap-mandatory
+            gap-4
+            overflow-x-auto
+            pb-4
+            scrollbar-hide
 
+            sm:grid
+            sm:grid-cols-2
+            sm:gap-5
+            sm:overflow-visible
+            sm:pb-0
+
+            lg:mt-14
+            lg:grid-cols-4
+          "
+        >
           {programs.map((program) => (
             <Link
               key={program.title}
               href={program.href}
-              className="group overflow-hidden rounded-2xl border border-[#173F35]/10 bg-white transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_16px_35px_rgba(23,63,53,0.09)]"
+              className="
+                group
+                w-[82vw]
+                shrink-0
+                snap-start
+                overflow-hidden
+                rounded-2xl
+                border
+                border-[#173F35]/10
+                bg-white
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:shadow-[0_16px_35px_rgba(23,63,53,0.09)]
+
+                sm:w-auto
+                sm:shrink
+              "
             >
-
               {/* Image */}
-              <div className="relative aspect-[1.25] overflow-hidden bg-[#EAF0E7]">
-
+              <div className="relative aspect-[1.25] w-full overflow-hidden bg-[#EAF0E7]">
                 <Image
                   src={program.image}
                   alt={`${program.title} at Sutra Health`}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                  sizes="
+                    (max-width: 640px) 82vw,
+                    (max-width: 1024px) 50vw,
+                    25vw
+                  "
+                  className="
+                    object-cover
+                    transition-transform
+                    duration-500
+                    group-hover:scale-[1.03]
+                  "
                 />
-
               </div>
 
               {/* Content */}
               <div className="p-5 sm:p-6">
-
                 <h3 className="font-serif text-[23px] tracking-[-0.02em] text-[#173F35]">
                   {program.title}
                 </h3>
@@ -101,24 +139,37 @@ export default function Programs() {
                     →
                   </span>
                 </div>
-
               </div>
-
             </Link>
           ))}
-
         </div>
 
+        {/* Mobile Swipe Hint */}
+        <div className="mt-3 flex items-center justify-center gap-2 text-[10px] font-medium uppercase tracking-[0.16em] text-[#789087] sm:hidden">
+          <span aria-hidden="true">←</span>
+          <span>Swipe to explore</span>
+          <span aria-hidden="true">→</span>
+        </div>
+
+        {/* Bottom Link */}
         <div className="mt-8 text-center">
           <Link
             href="/programs"
-            className="inline-flex items-center gap-2 text-[12px] font-semibold text-[#173F35] transition-colors hover:text-[#65966F]"
+            className="
+              inline-flex
+              items-center
+              gap-2
+              text-[12px]
+              font-semibold
+              text-[#173F35]
+              transition-colors
+              hover:text-[#65966F]
+            "
           >
             Explore all programs
             <span aria-hidden="true">→</span>
           </Link>
         </div>
-
       </Container>
     </section>
   );

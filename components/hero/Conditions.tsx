@@ -41,7 +41,6 @@ export default function Conditions() {
   return (
     <section className="bg-[#F5F6F0] py-16 sm:py-20 lg:py-24">
       <Container>
-
         {/* Heading */}
         <div className="mx-auto max-w-[760px] text-center">
           <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
@@ -63,14 +62,48 @@ export default function Conditions() {
           </p>
         </div>
 
-        {/* Condition cards */}
-        <div className="mt-10 grid gap-4 sm:grid-cols-2 lg:grid-cols-4">
+        {/* Condition Cards */}
+        <div
+          className="
+            mt-10
+            flex
+            snap-x
+            snap-mandatory
+            gap-4
+            overflow-x-auto
+            pb-4
+            scrollbar-hide
 
+            sm:grid
+            sm:grid-cols-2
+            sm:overflow-visible
+            sm:pb-0
+
+            lg:grid-cols-4
+          "
+        >
           {conditions.map((condition) => (
             <Link
               key={condition.href}
               href={condition.href}
-              className="group overflow-hidden rounded-[18px] border border-[#173F35]/10 bg-[#FCFCF8] transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_30px_rgba(23,63,53,0.08)]"
+              className="
+                group
+                w-[82vw]
+                shrink-0
+                snap-start
+                overflow-hidden
+                rounded-[18px]
+                border
+                border-[#173F35]/10
+                bg-[#FCFCF8]
+                transition-all
+                duration-300
+                hover:-translate-y-1
+                hover:shadow-[0_12px_30px_rgba(23,63,53,0.08)]
+
+                sm:w-auto
+                sm:shrink
+              "
             >
               {/* Image */}
               <div className="relative aspect-[4/2.7] w-full overflow-hidden">
@@ -78,8 +111,17 @@ export default function Conditions() {
                   src={condition.image}
                   alt={`${condition.title} lifestyle healthcare`}
                   fill
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-500 group-hover:scale-105"
+                  sizes="
+                    (max-width: 640px) 82vw,
+                    (max-width: 1024px) 50vw,
+                    25vw
+                  "
+                  className="
+                    object-cover
+                    transition-transform
+                    duration-500
+                    group-hover:scale-105
+                  "
                 />
               </div>
 
@@ -96,27 +138,56 @@ export default function Conditions() {
                 {/* Arrow */}
                 <span
                   aria-hidden="true"
-                  className="absolute bottom-5 right-4 flex h-7 w-7 items-center justify-center rounded-full border border-[#173F35]/10 text-[13px] text-[#65966F] transition-all duration-300 group-hover:translate-x-1 group-hover:bg-[#173F35] group-hover:text-white"
+                  className="
+                    absolute
+                    bottom-5
+                    right-4
+                    flex
+                    h-7
+                    w-7
+                    items-center
+                    justify-center
+                    rounded-full
+                    border
+                    border-[#173F35]/10
+                    text-[13px]
+                    text-[#65966F]
+                    transition-all
+                    duration-300
+                    group-hover:translate-x-1
+                    group-hover:bg-[#173F35]
+                    group-hover:text-white
+                  "
                 >
                   →
                 </span>
               </div>
             </Link>
           ))}
-
         </div>
 
-        {/* Bottom link */}
+        {/* Mobile Swipe Hint */}
+        
+
+        {/* Bottom Link */}
         <div className="mt-8 text-center">
           <Link
             href="/conditions"
-            className="inline-flex items-center gap-2 text-[12px] font-semibold text-[#173F35] transition-colors hover:text-[#65966F]"
+            className="
+              inline-flex
+              items-center
+              gap-2
+              text-[12px]
+              font-semibold
+              text-[#173F35]
+              transition-colors
+              hover:text-[#65966F]
+            "
           >
             Explore all conditions
             <span aria-hidden="true">→</span>
           </Link>
         </div>
-
       </Container>
     </section>
   );
