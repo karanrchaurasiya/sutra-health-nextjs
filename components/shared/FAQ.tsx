@@ -3,7 +3,16 @@
 import { useState } from "react";
 import Container from "@/components/shared/Container";
 
-const faqs = [
+type FAQItem = {
+  question: string;
+  answer: string;
+};
+
+type FAQProps = {
+  faqs?: FAQItem[];
+};
+
+const defaultFaqs: FAQItem[] = [
   {
     question: "What is lifestyle medicine?",
     answer:
@@ -31,7 +40,7 @@ const faqs = [
   },
 ];
 
-export default function FAQ() {
+export default function FAQ({ faqs = defaultFaqs }: FAQProps) {
   const [openIndex, setOpenIndex] = useState<number | null>(0);
 
   return (
@@ -72,7 +81,9 @@ export default function FAQ() {
                   <button
                     type="button"
                     aria-expanded={isOpen}
-                    onClick={() => setOpenIndex(isOpen ? null : index)}
+                    onClick={() =>
+                      setOpenIndex(isOpen ? null : index)
+                    }
                     className="flex w-full items-center justify-between gap-6 py-5 text-left sm:py-6"
                   >
                     <span className="text-[14px] font-medium leading-6 text-[#173F35] sm:text-[15px]">
