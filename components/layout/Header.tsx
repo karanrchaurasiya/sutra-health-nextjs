@@ -479,11 +479,14 @@ export default function Header() {
           >
             Gallery
           </Link>
-        </nav>
 
-        <Link href="/contact" className="navLink">
+            <Link href="/contact" className="navLink">
             Contact
           </Link>
+
+        </nav>
+
+        
 
         {/* DESKTOP CTA */}
         <Link

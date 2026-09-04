@@ -8,28 +8,28 @@ const programs = [
     description:
       "Personalized lifestyle guidance that brings everyday habits, movement and behaviour change into your care.",
     image: "/images/program-lifestyle.png",
-    href: "/services/lifestyle-medicine",
+    href: "/programs/lifestyle-counselling",
   },
   {
     title: "Nutrition Counselling",
     description:
       "Practical nutrition guidance tailored to your health needs, preferences and everyday life.",
     image: "/images/program-nutrition.png",
-    href: "/services/nutrition-counselling",
+    href: "/programs/dietary-advice",
   },
   {
     title: "Therapeutic Yoga",
     description:
       "Yoga practices adapted to support movement, strength, mobility, balance and overall wellbeing.",
     image: "/images/program-yoga.png",
-    href: "/services/therapeutic-yoga",
+    href: "/programs/therapeutic-yoga",
   },
   {
     title: "Breath & Mind",
     description:
       "Breath and mindfulness practices that support awareness, calm and a more balanced daily life.",
     image: "/images/program-breath.png",
-    href: "/services/breath-mind",
+    href: "/programs/pranayama",
   },
 ];
 
@@ -46,13 +46,13 @@ export default function Programs() {
           </p>
 
           <h2 className="font-serif text-[40px] leading-[1.05] tracking-[-0.035em] text-[#173F35] sm:text-[48px]">
-            Personalized care for your whole health.
+            Programs that turn the approach into practice.
           </h2>
 
           <p className="mx-auto mt-5 max-w-xl text-[15px] leading-7 text-[#687A73] sm:text-[16px]">
-            Your health is shaped by many connected parts of everyday life.
-            Our programs bring together practical approaches to support
-            healthier, sustainable habits.
+            Explore selected Sutra Health programs designed to support
+            practical changes in everyday life. Each program sits within
+            the wider whole-person approach.
           </p>
 
         </div>
@@ -107,6 +107,16 @@ export default function Programs() {
             </Link>
           ))}
 
+        </div>
+
+        <div className="mt-8 text-center">
+          <Link
+            href="/programs"
+            className="inline-flex items-center gap-2 text-[12px] font-semibold text-[#173F35] transition-colors hover:text-[#65966F]"
+          >
+            Explore all programs
+            <span aria-hidden="true">→</span>
+          </Link>
         </div>
 
       </Container>

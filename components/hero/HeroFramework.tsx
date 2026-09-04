@@ -32,7 +32,7 @@ export default function HealthFramework() {
           {/* Heading */}
           <div className="mx-auto max-w-[720px] text-center">
             <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
-              Health Building Guidelines
+              21-Point Health Building Guidelines
             </p>
 
             <h2 className="mt-3 font-serif text-[34px] leading-[1.05] tracking-[-0.035em] text-[#123F35] sm:text-[42px] lg:text-[48px]">
@@ -41,7 +41,7 @@ export default function HealthFramework() {
 
             <p className="mx-auto mt-4 max-w-[600px] text-[13px] leading-6 text-[#61736B] sm:text-[14px] sm:leading-7">
               A simple framework to reflect on everyday health habits and
-              identify areas where mindful change may be useful.
+              identify areas where positive lifestyle changes may be useful.
             </p>
           </div>
 
@@ -87,7 +87,7 @@ export default function HealthFramework() {
               href="/score"
               className="inline-flex items-center gap-2 rounded-full bg-[#173F35] px-5 py-2.5 text-[12px] font-semibold text-white transition-colors hover:bg-[#12352D]"
             >
-              Take the 21-Point Assessment
+              Explore the 21-Point Assessment
               <span aria-hidden="true">→</span>
             </Link>
           </div>

@@ -49,16 +49,17 @@ export default function Conditions() {
           </p>
 
           <h2 className="mt-3 font-serif text-[36px] leading-[1.05] tracking-[-0.035em] text-[#123F35] sm:text-[46px] lg:text-[50px]">
-            Support for your health,
+            Health conditions we support
             <br />
             <span className="italic text-[#65966F]">
-              where it matters most.
+              through lifestyle-focused care.
             </span>
           </h2>
 
           <p className="mx-auto mt-4 max-w-[590px] text-[13px] leading-6 text-[#687A73] sm:text-[14px] sm:leading-7">
-            Explore lifestyle-focused support across common health concerns,
-            with practical guidance shaped around everyday life.
+            Explore selected health concerns where lifestyle, nutrition,
+            movement and other supportive practices may form part of a
+            broader care plan.
           </p>
         </div>
 
@@ -80,11 +81,6 @@ export default function Conditions() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 25vw"
                   className="object-cover transition-transform duration-500 group-hover:scale-105"
                 />
-
-                {/* Number */}
-                <span className="absolute left-3 top-3 rounded-full bg-white/90 px-2.5 py-1 text-[9px] font-semibold tracking-[0.15em] text-[#65806F] backdrop-blur-sm">
-                  {condition.number}
-                </span>
               </div>
 
               {/* Content */}

@@ -6,39 +6,61 @@ import Container from "@/components/shared/Container";
 const testimonials = [
   {
     quote:
-      "The guidance helped me understand how small changes in my daily routine could improve my overall wellbeing.",
-    name: "Ananya R.",
-    location: "Bengaluru",
+      "Amazing consultation experience. The doctors patiently listened to my concerns and provided practical Natural solutions.",
+    name: "Rahul Sharma",
+    source: "Google Review",
   },
   {
     quote:
-      "The personalized approach to nutrition, yoga and lifestyle made it much easier for me to build healthier habits.",
-    name: "Rakesh M.",
-    location: "Mumbai",
+      "Yoga therapy helped reduce my back pain significantly. Professional staff and peaceful environment.",
+    name: "Priya Verma",
+    source: "Google Review",
   },
   {
     quote:
-      "I feel calmer, more focused and more supported. The approach feels practical and genuinely personal.",
-    name: "Meera S.",
-    location: "Pune",
+      "Highly recommend Sutra Health. The holistic treatment approach actually delivers long-term benefits.",
+    name: "Ankit Mehta",
+    source: "Google Review",
   },
   {
     quote:
-      "I feel calmer, more focused and more supported. The approach feels practical and genuinely personal.",
-    name: "Meera S. 2",
-    location: "Pune",
+      "Meditation sessions transformed my daily routine. Stress levels are much lower now.",
+    name: "Neha Kapoor",
+    source: "Google Review",
   },
   {
     quote:
-      "I feel calmer, more focused and more supported. The approach feels practical and genuinely personal.",
-    name: "Meera S. 3",
-    location: "Pune",
+      "I had the pleasure of getting guidance from Dr. Rakesh, a humble therapeutic Yoga consultant who is an MBBS doctor as well. He guided me and my son through our Yoga journey with a smile on his face, and my 14-year-old son became an instant fan. Sessions are held on a terrace facing the Aravallis with cold, fresh breeze even today. Will come back again and again.",
+    name: "Puneet Kulshrestha",
+    source: "Google Review",
   },
   {
     quote:
-      "I feel calmer, more focused and more supported. The approach feels practical and genuinely personal.",
-    name: "Meera S. 4",
-    location: "Pune",
+      "I stayed at Sutra Health with my family and it was the best decision we made. Every morning you can join yoga with Dr. Rakesh on the rooftop terrace as the sun rises. When my father needed a wheelchair, Dr. Rakesh personally arranged it within one phone call. A beautifully decorated stay with thoughtful little details everywhere.",
+    name: "Adheer Dixit",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "Very good service at Sutra Health, full care given to patients — bahut accha laga. Thank you Sutra Health!",
+    name: "Sumit Kashyap",
+    source: "Google Review",
+  },
+  {
+    quote: "Excellent experience.",
+    name: "Anil Passi",
+    source: "Google Review",
+  },
+  {
+    quote: "Mind blowing experience.",
+    name: "Arpit Krishan",
+    source: "Google Review",
+  },
+  {
+    quote:
+      "I'm from Argentina and had the privilege of staying at Dr. Rakesh's place, sharing yoga classes with him every morning on his terrace. A wonderful way to start the day — the terrace is spectacular and so are the classes. Highly recommend it!",
+    name: "Flor Riboldi",
+    source: "Google Review · Translated from Spanish",
   },
 ];
 
@@ -94,7 +116,7 @@ export default function Testimonials() {
 
         <div className="mx-auto max-w-2xl text-center">
           <p className="mb-4 text-[11px] font-semibold uppercase tracking-[0.18em] text-[#6B9573]">
-            What patients say
+            What people say
           </p>
 
           <h2 className="font-serif text-[40px] leading-[1.05] tracking-[-0.035em] text-[#173F35] sm:text-[48px]">
@@ -102,8 +124,7 @@ export default function Testimonials() {
           </h2>
 
           <p className="mx-auto mt-5 max-w-xl text-[15px] leading-7 text-[#687A73]">
-            Hear from people who have taken steps towards healthier,
-            more sustainable everyday habits.
+            Real experiences shared by people who have visited or engaged with Sutra Health.
           </p>
         </div>
 
@@ -242,7 +263,7 @@ function TestimonialCard({
   testimonial: {
     quote: string;
     name: string;
-    location: string;
+    source: string;
   };
 }) {
   return (
@@ -275,7 +296,7 @@ function TestimonialCard({
           </p>
 
           <p className="mt-0.5 text-[11px] text-[#7A8983]">
-            {testimonial.location}
+            {testimonial.source}
           </p>
 
         </div>

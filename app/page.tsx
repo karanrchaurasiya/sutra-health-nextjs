@@ -4,12 +4,11 @@ import Hero from "@/components/hero/Hero";
 import Credibility from "@/components/hero/Credibility";
 import Problem from "@/components/hero/Problem";
 import HeroFramework from "@/components/hero/HeroFramework";
-import HowItWorks from "@/components/hero/HowItWorks";
+import Programs from "@/components/hero/Programs";
 
 
 import Conditions from "@/components/hero/Conditions";
 import Approach from "@/components/hero/Approach";
-import Experts from "@/components/hero/Experts";
 import Testimonials from "@/components/hero/Testimonials";
 import BookingCTA from "@/components/hero/BookingCTA";
 import FAQ from "@/components/shared/FAQ";
@@ -90,11 +89,10 @@ export default function Home() {
 
         <HeroFramework />
 
-        <HowItWorks />
-
         <Conditions />
 
-       <Experts />
+        <Programs />
+
 
         <Testimonials />
 
