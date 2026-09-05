@@ -7,6 +7,7 @@ import Container from "@/components/shared/Container";
 import {
   conditions,
   getCondition,
+  getSubpages,
 } from "@/data/conditions";
 
 function slugify(value: string) {
@@ -109,6 +110,8 @@ export default async function ConditionPage({
   const relatedConditions = condition.relatedConditions
     .map((relatedSlug) => getCondition(relatedSlug))
     .filter(Boolean);
+
+  const questionPages = getSubpages(condition.slug);
 
   /* -------------------------------------------------------
      FAQ structured data
@@ -596,6 +599,46 @@ export default async function ConditionPage({
             </div>
           </Container>
         </section>
+
+        {/* ===================================================
+            RELATED QUESTIONS
+        ================================================== */}
+        {questionPages.length > 0 && (
+          <section className="bg-white py-10 sm:py-12 lg:py-14">
+            <Container>
+              <div className="max-w-4xl">
+                <p className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#65966F] sm:text-[11px]">
+                  Common questions
+                </p>
+
+                <h2 className="mt-3 font-serif text-3xl tracking-[-0.03em] text-[#173F35] sm:text-4xl">
+                  Questions about {condition.title.toLowerCase()}
+                </h2>
+
+                <div className="mt-6 border-t border-[#173F35]/10">
+                  {questionPages.map((subpage) => (
+                    <Link
+                      key={subpage.slug}
+                      href={`/conditions/${condition.slug}/${subpage.slug}`}
+                      className="group flex items-center justify-between gap-6 border-b border-[#173F35]/10 py-5"
+                    >
+                      <span className="text-[16px] leading-7 text-[#173F35] sm:text-[17px]">
+                        {subpage.question}
+                      </span>
+
+                      <span
+                        aria-hidden="true"
+                        className="shrink-0 text-[#65966F] transition-transform duration-300 group-hover:translate-x-1"
+                      >
+                        →
+                      </span>
+                    </Link>
+                  ))}
+                </div>
+              </div>
+            </Container>
+          </section>
+        )}
 
         {/* ===================================================
             RELATED CONDITIONS
