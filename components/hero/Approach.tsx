@@ -6,42 +6,42 @@ const steps = [
     title: "Understand",
     subtitle: "See the whole picture.",
     description:
-      "We begin with the person, not just the health concern. We consider everyday factors such as food, movement, sleep, stress, breathing and routines to understand the wider picture.",
+      "We start with you, not your symptom. Food, sleep, stress, movement — the whole context, before anything else.",
   },
   {
     number: "02",
     title: "Identify",
     subtitle: "Recognise the patterns.",
     description:
-      "We look at everyday habits and lifestyle patterns that may be relevant to health. This helps clarify where change may be useful and where to begin.",
+      "We find the patterns actually driving the problem. Not guesses — patterns specific to your life.",
   },
   {
     number: "03",
     title: "Personalise",
     subtitle: "Create a plan that fits real life.",
     description:
-      "There is no single routine that suits everyone. We bring together appropriate elements of Lifestyle Medicine, Nutrition, Yoga Therapy and lifestyle modification according to individual needs, circumstances and goals.",
+      "We combine the right elements of lifestyle medicine, nutrition, and yoga therapy for your situation. There's no single plan that fits everyone.",
   },
   {
     number: "04",
     title: "Practise",
     subtitle: "Turn understanding into action.",
     description:
-      "Knowledge matters when it can be used in everyday life. We translate health education into practical actions involving areas such as food, movement, breathing, rest and other healthy behaviours.",
+      "Advice you can't use is worthless. We turn every recommendation into something you can do this week.",
   },
   {
     number: "05",
     title: "Sustain",
     subtitle: "Build habits that can last.",
     description:
-      "Lasting change is built gradually. We focus on realistic habits that can become part of everyday life rather than relying on short-term routines or perfection.",
+      "Change that lasts is built slowly. We're not selling you a 21-day reset. We help you build habits that can last a lifetime.",
   },
   {
     number: "06",
     title: "Adapt",
     subtitle: "Review and keep moving forward.",
     description:
-      "Life changes, and a health plan may need to change with it. We encourage reflection, review and adjustment as needs, circumstances and experience evolve.",
+      "Your life will change. Your plan should too. We check in and adjust — this isn't a one-time fix.",
   },
 ];
 

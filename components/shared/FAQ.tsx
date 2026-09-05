@@ -16,27 +16,27 @@ const defaultFaqs: FAQItem[] = [
   {
     question: "What is lifestyle medicine?",
     answer:
-      "Lifestyle medicine uses evidence-informed approaches such as nutrition, physical activity, sleep, stress management and healthy lifestyle practices to support prevention, management and overall wellbeing. It can complement appropriate medical care.",
+      "It's healthcare built around your daily habits - food, movement, sleep, stress - rather than just prescriptions. It works alongside your existing medical care, not instead of it.",
   },
   {
-    question: "Can yoga therapy be part of my healthcare?",
+    question: "Can yoga therapy be part of managing something like diabetes or blood pressure?",
     answer:
-      "Yoga therapy may be considered as part of an integrative approach when appropriate and professionally guided. It is intended to complement, not replace, appropriate medical care.",
+      "It can be one part of your overall care, alongside your doctor - not a replacement for it. Any medication changes should always go through your physician."
   },
   {
     question: "Do you offer online consultations?",
     answer:
-      "Yes. Sutra Health provides an online consultation pathway for people across India. The appropriate consultation and next steps depend on individual health needs and professional assessment.",
+      "Yes. We work with people across India, not just Gurugram. Online consultations are available for lifestyle medicine, nutrition counselling, and yoga therapy. In-person sessions are also available in Gurugram.",
   },
   {
-    question: "How long does it take to see changes?",
+    question: "How long before I see results?",
     answer:
-      "It varies from person to person and depends on individual health, lifestyle and consistency. Some people may notice changes in wellbeing over time, while measurable health changes can take longer.",
+      "Depends on you and your consistency - some people feel different within weeks, some things take longer. We won't promise a timeline nobody can guarantee.",
   },
   {
-    question: "Is the Sutra Health approach suitable for everyone?",
+    question: "Is this right for everyone?",
     answer:
-      "Suitability depends on your individual health and circumstances. If you have a medical condition or take medication, discuss a new health or exercise programme with your healthcare provider.",
+      "If you're managing a serious medical condition or on medication, talk to your doctor before starting. This is built to complement medical care, not replace it.",
   },
 ];
 

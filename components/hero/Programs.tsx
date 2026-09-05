@@ -6,28 +6,28 @@ const programs = [
   {
     title: "Lifestyle Medicine",
     description:
-      "Personalized lifestyle guidance that brings everyday habits, movement and behaviour change into your care.",
+      "One-on-one guidance on the daily habits that are actually moving the needle for you.",
     image: "/images/program-lifestyle.png",
     href: "/programs/lifestyle-counselling",
   },
   {
     title: "Nutrition Counselling",
     description:
-      "Practical nutrition guidance tailored to your health needs, preferences and everyday life.",
+      "Practical food guidance — built around your preferences, not a rulebook you'll abandon.",
     image: "/images/program-nutrition.png",
     href: "/programs/dietary-advice",
   },
   {
     title: "Therapeutic Yoga",
     description:
-      "Yoga practices adapted to support movement, strength, mobility, balance and overall wellbeing.",
+      "Adapted movement for your body, not a generic class. Built for strength, mobility, and balance.",
     image: "/images/program-yoga.png",
     href: "/programs/therapeutic-yoga",
   },
   {
-    title: "Breath & Mind",
+    title: "Pranayama & Breathwork",
     description:
-      "Breath and mindfulness practices that support awareness, calm and a more balanced daily life.",
+      "Breathing practices that measurably calm your nervous system — and take five minutes.",
     image: "/images/program-breath.png",
     href: "/programs/pranayama",
   },
@@ -44,7 +44,7 @@ export default function Programs() {
           </p>
 
           <h2 className="font-serif text-[40px] leading-[1.05] tracking-[-0.035em] text-[#173F35] sm:text-[48px]">
-            Programs that turn the approach into practice.
+            The approach, broken into things you can actually book.
           </h2>
 
           <p className="mx-auto mt-5 max-w-xl text-[15px] leading-7 text-[#687A73] sm:text-[16px]">

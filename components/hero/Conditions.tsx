@@ -7,7 +7,7 @@ const conditions = [
     number: "01",
     title: "Weight Management",
     description:
-      "Build sustainable lifestyle and nutrition habits that support healthier weight management.",
+      "Not another crash diet. A plan built around food you'll actually keep eating.",
     href: "/conditions/weight-management",
     image: "/images/conditions/weight-management.png",
   },
@@ -15,7 +15,7 @@ const conditions = [
     number: "02",
     title: "Metabolic Health",
     description:
-      "Explore lifestyle, nutrition and movement approaches that support healthier metabolic function.",
+      "A closer look at your diet, movement, and daily routine — alongside your existing medical care.",
     href: "/conditions/metabolic-health",
     image: "/images/conditions/metabolic-health.png",
   },
@@ -23,7 +23,7 @@ const conditions = [
     number: "03",
     title: "High Blood Pressure",
     description:
-      "Explore lifestyle, nutrition, movement and stress-management approaches that support cardiovascular wellbeing.",
+      "Lifestyle changes worth exploring, done in coordination with your doctor.",
     href: "/conditions/high-blood-pressure",
     image: "/images/conditions/high-blood-pressure.png",
   },
@@ -31,7 +31,7 @@ const conditions = [
     number: "04",
     title: "Arthritis & Joint Pain",
     description:
-      "Explore supportive lifestyle and movement approaches for mobility and everyday joint wellbeing.",
+      "Movement-based practices adapted for your body and everyday mobility.",
     href: "/conditions/arthritis-joint-pain",
     image: "/images/conditions/arthritis-joint-pain.png",
   },

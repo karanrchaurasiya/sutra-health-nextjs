@@ -3,7 +3,7 @@ import Container from "@/components/shared/Container";
 const highlights = [
   {
     number: "1200+",
-    label: "People supported",
+    label: "People we've worked with directly 15 Years",
   },
   {
     number: "1997",
@@ -11,7 +11,7 @@ const highlights = [
   },
   {
     number: "Online",
-    label: "Consultation available across India",
+    label: "Consultation available anywhere in India",
   },
 ];
 
@@ -30,14 +30,13 @@ export default function Credibility() {
                 id="credibility-heading"
                 className="mt-3 max-w-[600px] font-serif text-[30px] leading-[1.08] tracking-[-0.03em] text-[#123F35] sm:text-[36px]"
               >
-                Healthcare shaped by experience, evidence and everyday practice.
+                You don't have five separate problems. You have one life.
               </h2>
 
               <p className="mt-4 max-w-[620px] text-[13px] leading-6 text-[#687A73] sm:text-[14px] sm:leading-7">
-                Sutra Health (Life Quality) brings together lifestyle-focused
-                healthcare, nutrition, yoga therapy and health education. The
-                work is grounded in practical lifestyle support and designed to
-                complement appropriate medical care.
+               Most healthcare treats your sleep, your food, your stress, and your movement as unrelated boxes. They're not. Fix one without looking at the others, and the fix doesn't hold.
+
+We built Sutra Health around that idea. One doctor, one plan, looking at the whole picture - not four specialists giving you four disconnected instructions.
               </p>
             </div>
 

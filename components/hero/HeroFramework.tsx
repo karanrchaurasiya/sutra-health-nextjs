@@ -5,20 +5,20 @@ const levels = [
   {
     title: "Green",
     label: "Continue",
-    description: "Habits that are already supporting you.",
+    description: "Keep doing this, it's working well for you.",
     color: "bg-[#6B9573]",
   },
   {
     title: "Yellow",
     label: "Adjust",
-    description: "Areas where small, mindful changes may help.",
+    description: "Worth adjusting.",
     color: "bg-[#D6B65A]",
   },
   {
     title: "Red",
     label: "Consider Change",
     description:
-      "Areas that may benefit from more meaningful lifestyle changes.",
+      "This is where change matters most.",
     color: "bg-[#C86B62]",
   },
 ];
@@ -36,12 +36,11 @@ export default function HealthFramework() {
             </p>
 
             <h2 className="mt-3 font-serif text-[34px] leading-[1.05] tracking-[-0.035em] text-[#123F35] sm:text-[42px] lg:text-[48px]">
-              21-Point Lifestyle Assessment
+              Find out exactly where you stand. It's free.
             </h2>
 
             <p className="mx-auto mt-4 max-w-[600px] text-[13px] leading-6 text-[#61736B] sm:text-[14px] sm:leading-7">
-              A simple framework to reflect on everyday health habits and
-              identify areas where positive lifestyle changes may be useful.
+            21 questions across sleep, food, movement, digestion, and stress. You'll get a simple, honest breakdown:
             </p>
           </div>
 

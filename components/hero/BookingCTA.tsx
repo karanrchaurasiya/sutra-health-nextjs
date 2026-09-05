@@ -25,14 +25,13 @@ export default function BookingCTA() {
             </p>
 
             <h2 className="mt-4 font-serif text-[38px] leading-[1.05] tracking-[-0.035em] text-[#FAF8F1] sm:text-[48px] lg:text-[54px]">
-              Your health deserves
+              Your health isn't a template.
               <br className="hidden sm:block" />
-              a more personal approach.
+              Your plan shouldn't be either.
             </h2>
 
             <p className="mx-auto mt-5 max-w-xl text-[14px] leading-6 text-[#D0DDD5] sm:text-[15px] sm:leading-7">
-              Start a conversation with our team and discover an approach to
-              healthcare built around your lifestyle, goals and needs.
+             Fifteen minutes with our team will tell you more than another month of googling symptoms.
             </p>
 
             {/* Buttons */}

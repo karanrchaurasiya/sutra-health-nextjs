@@ -206,9 +206,9 @@ export default function Hero() {
                 xl:text-[70px]
               "
             >
-              Build better health
+              Your daily habits   
               <br />
-              through <span className="italic text-[#65966F]">lifestyle.</span>
+              are already<span className="italic text-[#65966F]"> treating you.</span>
             </h1>
 
             {/* ==================================================
@@ -234,10 +234,7 @@ export default function Hero() {
                 lg:leading-7
               "
             >
-              Sutra Health takes a whole-person approach to health and
-              wellbeing, bringing together lifestyle medicine, nutrition,
-              therapeutic yoga, breath and mind practices, and sustainable
-              everyday habits.
+              We combine lifestyle medicine, nutrition, and therapeutic yoga into one plan — built around your actual life, not a generic wellness template. Led by a doctor who's been doing this for 15 years.
             </p>
 
             {/* ==================================================

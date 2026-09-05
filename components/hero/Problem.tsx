@@ -4,17 +4,17 @@ const factors = [
   {
     number: "01",
     title: "What we eat",
-    text: "Food is part of everyday health. The quality, variety and pattern of what we eat can influence weight, metabolic health and other aspects of wellbeing.",
+    text: "Not a diet plan you'll quit in three weeks. We look at what you actually eat, why, and what's realistic to change first.",
   },
   {
     number: "02",
     title: "How we live",
-    text: "Movement, sleep, daily routines and the way we spend our time all form part of the health picture. These patterns are often easier to change when they are understood in context.",
+    text: "Sleep, movement, daily routine. Small, boring habits are usually the ones doing the most damage - or the most good.",
   },
   {
     number: "03",
-    title: "How we respond",
-    text: "Stress, habits, breathing and our relationship with everyday demands can affect how we feel and function. Looking at these alongside physical health gives a fuller picture.",
+    title: "How you handle pressure",
+    text: "Stress and breathing patterns affect your body more than most people realize. We treat this as part of your health, not an afterthought.",
   },
 ];
 

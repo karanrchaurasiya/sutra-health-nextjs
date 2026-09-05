@@ -120,7 +120,7 @@ export default function Testimonials() {
           </p>
 
           <h2 className="font-serif text-[40px] leading-[1.05] tracking-[-0.035em] text-[#173F35] sm:text-[48px]">
-            Small changes. Meaningful journeys.
+            Real people. Real terrace. Real results.
           </h2>
 
           <p className="mx-auto mt-5 max-w-xl text-[15px] leading-7 text-[#687A73]">
