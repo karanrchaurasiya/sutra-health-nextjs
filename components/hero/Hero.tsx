@@ -182,7 +182,7 @@ export default function Hero() {
             ================================================== */}
             <h1
               className="
-                mt-3
+                mt-3m
                 max-w-[690px]
 
                 font-serif
@@ -207,7 +207,6 @@ export default function Hero() {
               "
             >
               Your daily habits   
-              <br />
               are already<span className="italic text-[#65966F]"> treating you.</span>
             </h1>
 
