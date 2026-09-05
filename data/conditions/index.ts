@@ -15,8 +15,13 @@ import { digestiveGutHealth } from "./digestive-gut-health";
 import { womensHealth } from "./womens-health";
 
 import { highBloodPressureSubpages } from "./subpages/high-blood-pressure";
-// Additional subpage imports get added here as each condition's
-// research + triage is completed (metabolic-health, weight-management, etc.)
+import { arthritisJointPainSubpages } from "./subpages/arthritis-joint-pain";
+import { metabolicHealthSubpages } from "./subpages/metabolic-health";
+import { migraineHeadacheSubpages } from "./subpages/migraine-headache";
+import { digestiveGutHealthSubpages } from "./subpages/digestive-gut-health";
+// weight-management and womens-health remain unresearched — see the
+// TODO comments in their respective data files. Add their subpage
+// imports here once the same capture-and-triage process is run on them.
 
 export const conditions: Condition[] = [
   weightManagement,
@@ -34,12 +39,13 @@ export const conditions: Condition[] = [
 // content; only add entries once the capture-and-triage process (see the
 // pilot brief) has actually been run for that condition.
 const subpagesByCondition: Record<string, ConditionSubpage[]> = {
-  "high-blood-pressure": highBloodPressureSubpages,
+ "high-blood-pressure": highBloodPressureSubpages,
+  "arthritis-joint-pain": arthritisJointPainSubpages,
+  "metabolic-health": metabolicHealthSubpages,
+  "migraine-headache": migraineHeadacheSubpages,
+  "digestive-gut-health": digestiveGutHealthSubpages,
+  // Not yet researched — intentionally empty, not placeholder content.
   "weight-management": [],
-  "metabolic-health": [],
-  "arthritis-joint-pain": [],
-  "migraine-headache": [],
-  "digestive-gut-health": [],
   "womens-health": [],
 };
 

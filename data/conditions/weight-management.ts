@@ -147,7 +147,7 @@ export const weightManagement: Condition = {
     },
   ],
 
-  relatedConditions: ["metabolic-health", "high-blood-pressure"],
+  relatedConditions: ["metabolic-health", "high-blood-pressure", "digestive-gut-health"],
 
   internalLinks: [
     { label: "Nutrition", href: "/approach/nutrition" },
